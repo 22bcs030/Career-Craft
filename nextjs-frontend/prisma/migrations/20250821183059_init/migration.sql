@@ -1,0 +1,20 @@
+-- AlterTable
+ALTER TABLE "Assessment" ALTER COLUMN "questions" SET NOT NULL,
+ALTER COLUMN "questions" SET DATA TYPE TEXT;
+
+-- AlterTable
+ALTER TABLE "IndustryInsight" ALTER COLUMN "salaryRanges" SET NOT NULL,
+ALTER COLUMN "salaryRanges" SET DATA TYPE TEXT,
+ALTER COLUMN "topSkills" SET NOT NULL,
+ALTER COLUMN "topSkills" SET DATA TYPE TEXT,
+ALTER COLUMN "keyTrends" SET NOT NULL,
+ALTER COLUMN "keyTrends" SET DATA TYPE TEXT,
+ALTER COLUMN "recommendedSkills" SET NOT NULL,
+ALTER COLUMN "recommendedSkills" SET DATA TYPE TEXT;
+
+-- AlterTable
+ALTER TABLE "Resume" ALTER COLUMN "structuredData" SET DATA TYPE TEXT;
+
+-- AlterTable
+ALTER TABLE "User" ALTER COLUMN "skills" DROP NOT NULL,
+ALTER COLUMN "skills" SET DATA TYPE TEXT;

@@ -201,15 +201,22 @@ export default function CarrierProfile({ industries }) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gradient-to-b from-background to-secondary/10 min-h-screen py-5 px-4"> 
+    <div className="flex flex-col items-center justify-center bg-gradient-to-br from-[#0A0A0A] via-[#121212] to-[#1A1A1A] min-h-screen py-5 px-4 relative overflow-hidden"> 
+      {/* Background accents */}
+      <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+        <div className="absolute -top-40 -left-40 w-80 h-80 bg-[#6A1B9A] rounded-full filter blur-3xl"></div>
+        <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-[#C62828] rounded-full filter blur-3xl"></div>
+        <div className="absolute top-1/4 right-10 w-60 h-60 bg-[#1565C0] rounded-full filter blur-3xl"></div>
+      </div>
+
       {/* Profile status message */}
       {!isEditing && (
-        <div className="w-full max-w-lg mb-6 p-4 border border-primary/30 rounded-md bg-primary/5 text-foreground">
+        <div className="w-full max-w-lg mb-6 p-4 border border-[#F57C00]/30 rounded-md bg-gradient-to-r from-[#F57C00]/10 to-[#FFC107]/10 text-white backdrop-blur-sm z-10">
           <div className="flex items-start gap-3">
-            <CheckCircle className="h-5 w-5 mt-0.5 text-primary flex-shrink-0" />
+            <CheckCircle className="h-5 w-5 mt-0.5 text-[#FFC107] flex-shrink-0" />
             <div>
               <h3 className="font-medium mb-1">Welcome back!</h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-[#E0E0E0]">
                 Your profile is already set up. Feel free to update any information below.
               </p>
             </div>
@@ -218,33 +225,34 @@ export default function CarrierProfile({ industries }) {
       )}
 
       {/* Progress bar */}
-      <div className="w-full max-w-lg mb-2 flex flex-col gap-1">
+      <div className="w-full max-w-lg mb-4 flex flex-col gap-2 z-10">
         <div className="flex justify-between items-center">
-          <span className="text-sm text-muted-foreground">Profile completion</span>
-          <span className="text-sm font-medium">{progress}%</span>
+          <span className="text-sm text-[#E0E0E0] font-medium">Profile completion</span>
+          <span className="text-sm font-bold bg-gradient-to-r from-[#F57C00] to-[#FFC107] bg-clip-text text-transparent">{progress}%</span>
         </div>
-        <div className="w-full h-2 bg-secondary rounded-full overflow-hidden">
+        <div className="w-full h-3 bg-[#282828] rounded-full overflow-hidden p-0.5 border border-[#333333]">
           <div 
-            className="h-full bg-primary transition-all duration-500 ease-out"
+            className="h-full bg-gradient-to-r from-[#C62828] to-[#F57C00] rounded-full transition-all duration-500 ease-out shadow-[0_0_8px_rgba(245,124,0,0.5)]"
             style={{ width: `${progress}%` }}
           ></div>
         </div>
       </div>
 
-      <Card className="w-full max-w-lg border border-border/60 shadow-lg">
-        <CardHeader className="bg-muted/30 border-b border-border/30">
-          <CardTitle className="bg-gradient-to-r from-primary to-primary-foreground bg-clip-text text-transparent text-4xl font-bold">
+      <Card className="w-full max-w-lg border border-[#333333] bg-[#121212] shadow-xl relative overflow-hidden backdrop-blur-sm z-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#C62828]/5 via-transparent to-[#1565C0]/5"></div>
+        <CardHeader className="bg-[#1A1A1A] border-b border-[#282828] relative z-10">
+          <CardTitle className="bg-gradient-to-r from-[#F57C00] via-[#FFC107] to-[#1565C0] bg-clip-text text-transparent text-4xl font-bold">
             {isEditing ? "Update Your Profile" : "Complete Your Profile"}
           </CardTitle>
-          <CardDescription className="text-muted-foreground text-base">
+          <CardDescription className="text-[#A0A0A0] text-base">
             {isEditing 
               ? "Keep your professional details current to receive the most relevant insights"
               : "Tell us about your professional background to get personalized career recommendations"}
           </CardDescription>
         </CardHeader>
         
-        <CardContent className="pt-1 pb-1"> 
-          <form id="profile-form" onSubmit={handleSubmit(onSubmit)} className="space-y-3">
+        <CardContent className="pt-4 pb-2 relative z-10"> 
+          <form id="profile-form" onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             {/* Industry Selection */}
             <div className="space-y-1">
               <div className="flex items-center gap-2">
@@ -444,12 +452,12 @@ export default function CarrierProfile({ industries }) {
           </form>
         </CardContent>
         
-        <CardFooter className="flex flex-col sm:flex-row gap-3 justify-end border-t border-border/30 bg-muted/20 pt-4">
+        <CardFooter className="flex flex-col sm:flex-row gap-4 justify-end border-t border-[#282828] bg-[#1A1A1A] pt-5 pb-5 relative z-10">
           {isEditing && (
             <Button 
               variant="outline" 
               onClick={() => router.push("/dashboard")}
-              className="w-full sm:w-auto"
+              className="w-full sm:w-auto bg-transparent border-[#333333] text-[#E0E0E0] hover:bg-[#282828] hover:text-[#FFC107]"
             >
               Cancel
             </Button>
@@ -457,7 +465,7 @@ export default function CarrierProfile({ industries }) {
           <Button 
             type="submit" 
             form="profile-form"
-            className="w-full sm:w-auto bg-primary hover:bg-primary/90 transition-colors"
+            className="w-full sm:w-auto bg-gradient-to-r from-[#C62828] to-[#F57C00] text-white hover:opacity-90 border-none shadow-lg shadow-[#C62828]/20"
             disabled={updateLoading}
           >
             {updateLoading ? (

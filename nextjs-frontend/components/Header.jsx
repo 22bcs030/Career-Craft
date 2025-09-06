@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Button } from "./ui/button";
 import {
@@ -26,18 +28,15 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { checkUser } from "@/lib/checkUser";
+// Remove checkUser import as it's server-side only
+// import { checkUser } from "@/lib/checkUser";
 
-export default async function Header() {
-  await checkUser();
+export default function Header() {
+  // Client component doesn't need server-side checkUser
 
   return (
-    <header className="fixed top-0 w-full border-b  bg-background/80 backdrop-blur-md z-50 shadow-md ">
+    <header className="fixed top-0 w-full border-b border-[#282828] bg-[#0F0F0F]/90 backdrop-blur-md z-50 shadow-md">
       <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
-      
-      
-      
-      
         {/* <Link href="/" className="relative group">
           <div className="overflow-hidden relative">
             <Image
@@ -47,28 +46,28 @@ export default async function Header() {
               height={60}
               className="h-12 py-1 w-auto object-contain transition-all duration-300 group-hover:scale-110 group-hover:brightness-110"
             />
-            <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:w-full"></div>
+            <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-[#C62828] to-[#F57C00] transition-all duration-300 group-hover:w-full"></div>
           </div>
         </Link> */}
 
 
 <Link href="/" className="relative group block overflow-hidden">
       <div className="relative h-12 py-1 flex items-center">
-        {/* Animated floating balls */}
-        <div className="absolute -left-1 top-1 w-4 h-4 rounded-full bg-blue-500 opacity-70 animate-pulse"></div>
-        <div className="absolute left-1 -top-1 w-3 h-3 rounded-full bg-indigo-600 opacity-60 animate-bounce"></div>
-        <div className="absolute right-0 top-2 w-3 h-3 rounded-full bg-purple-500 opacity-70 animate-ping"></div>
-        <div className="absolute right-3 bottom-1 w-2 h-2 rounded-full bg-blue-400 opacity-80 animate-pulse"></div>
+        {/* Animated particles */}
+        <div className="absolute -left-1 top-1 w-3 h-3 rounded-full bg-[#C62828] opacity-70 animate-pulse"></div>
+        <div className="absolute left-1 -top-1 w-2 h-2 rounded-full bg-[#F57C00] opacity-60 animate-bounce"></div>
+        <div className="absolute right-0 top-2 w-3 h-3 rounded-full bg-[#FFC107] opacity-70 animate-ping"></div>
+        <div className="absolute right-3 bottom-1 w-2 h-2 rounded-full bg-[#F57C00] opacity-80 animate-pulse"></div>
         
         {/* Text with gradient effect */}
         <div className="font-bold text-3xl tracking-tight">
-          <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent animate-gradient">Career</span>
-          <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 bg-clip-text text-transparent animate-gradient">Craft</span>
+          <span className="bg-gradient-to-r from-[#C62828] via-[#F57C00] to-[#FFC107] bg-clip-text text-transparent">Career</span>
+          <span className="bg-gradient-to-r from-[#F57C00] via-[#FFC107] to-[#C62828] bg-clip-text text-transparent">Craft</span>
         </div>
       </div>
       
       {/* Animated underline */}
-      <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:w-full"></div>
+      <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-[#C62828] to-[#F57C00] transition-all duration-300 group-hover:w-full"></div>
     </Link>
 
         {/* Action Buttons */}
@@ -80,43 +79,40 @@ export default async function Header() {
               <Button 
                 variant="outline" 
                 className="flex items-center gap-2 px-4 py-2 
-                  bg-gradient-to-r from-green-50 to-emerald-50 
-                  hover:from-green-100 hover:to-emerald-100 
-                  border-2 border-transparent hover:border-green-200 
+                  bg-gradient-to-r from-[#121212] to-[#1A1A1A] 
+                  hover:from-[#1A1A1A] hover:to-[#282828] 
+                  border border-[#282828] hover:border-[#F57C00] 
                   transition-all duration-300 shadow-sm hover:shadow-md
-                  group relative overflow-hidden"
+                  group relative overflow-hidden text-white"
               >
                 <div className="flex items-center gap-2">
                   <div className="relative">
-                    <ListTodo className="h-4 w-4 text-green-600 
+                    <ListTodo className="h-4 w-4 text-[#F57C00] 
                       transition-transform duration-200 group-hover:-translate-y-5" />
-                    <BarChart className="h-4 w-4 text-emerald-600 absolute 
+                    <BarChart className="h-4 w-4 text-[#FFC107] absolute 
                       top-0 left-0 translate-y-5 group-hover:translate-y-0 
                       transition-transform duration-200" />
                   </div>
-                  <span className="font-medium bg-gradient-to-r from-green-600 
-                    to-emerald-600 bg-clip-text text-transparent">
+                  <span className="font-medium bg-gradient-to-r from-[#F57C00] 
+                    to-[#FFC107] bg-clip-text text-transparent">
                     Revision Topics
                   </span>
-                  <ChevronRight className="h-4 w-4 text-green-600 
+                  <ChevronRight className="h-4 w-4 text-[#F57C00] 
                     transform transition-transform duration-200 
                     group-hover:translate-x-1" />
                 </div>
-                
-
-
 
                 {/* Notification Dot */}
                 <span className="absolute -top-1 -right-1 flex h-2 w-2">
                   <span className="absolute inline-flex w-full h-full rounded-full 
-                    bg-green-400 opacity-75 animate-ping"></span>
+                    bg-[#F57C00] opacity-75 animate-ping"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 
-                    bg-green-500"></span>
+                    bg-[#FFC107]"></span>
                 </span>
                 
                 {/* Hover Effect Background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-green-100/50 
-                  to-emerald-100/50 opacity-0 group-hover:opacity-100 
+                <div className="absolute inset-0 bg-gradient-to-r from-[#C62828]/10 
+                  to-[#F57C00]/10 opacity-0 group-hover:opacity-100 
                   transition-opacity duration-300"></div>
               </Button>
             </Link>
@@ -124,33 +120,33 @@ export default async function Header() {
 
   <DropdownMenu>
   <DropdownMenuTrigger asChild>
-    <Button className="relative overflow-hidden group flex items-center gap-2 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white transition-all duration-500 border-none shadow-md hover:shadow-xl transform hover:-translate-y-1">
+    <Button className="relative overflow-hidden group flex items-center gap-2 bg-gradient-to-r from-[#C62828] to-[#F57C00] hover:from-[#D32F2F] hover:to-[#FF8F00] text-white transition-all duration-500 border-none shadow-md hover:shadow-xl transform hover:-translate-y-1">
       <Briefcase className="h-4 w-4 transform transition-all duration-300 group-hover:rotate-12 group-hover:scale-110" />
       <span className="hidden md:block relative z-10 font-medium tracking-wide">CareerCraft</span>
       <ChevronDown className="h-4 w-4 transition-transform duration-500 group-hover:rotate-180" />
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-indigo-500 opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#FFC107]/20 to-[#FF8F00]/20 opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
       <div className="absolute bottom-0 left-0 w-0 h-1 bg-white transition-all duration-500 group-hover:w-full"></div>
       <div className="absolute top-0 right-0 w-0 h-1 bg-white transition-all duration-500 group-hover:w-full delay-100"></div>
     </Button>
   </DropdownMenuTrigger>
   
-  <DropdownMenuContent align="end" className="w-64 shadow-2xl rounded-lg border border-blue-100 bg-white p-2 mt-2 overflow-hidden origin-top-right animate-in fade-in slide-in-from-top-2 duration-300">
+  <DropdownMenuContent align="end" className="w-64 shadow-2xl rounded-lg border border-[#282828] bg-[#121212] p-2 mt-2 overflow-hidden origin-top-right animate-in fade-in slide-in-from-top-2 duration-300">
     
     <DropdownMenuItem asChild>
-      <Link href="/resume" className="flex items-center gap-3 hover:bg-blue-50 p-3 rounded-lg group transition-all duration-300 hover:shadow-md">
-        <div className="p-2 bg-blue-100 text-blue-600 rounded-lg group-hover:bg-blue-200 transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-3">
+      <Link href="/resume" className="flex items-center gap-3 hover:bg-[#1A1A1A] p-3 rounded-lg group transition-all duration-300 hover:shadow-md">
+        <div className="p-2 bg-[#1A1A1A] text-[#F57C00] rounded-lg group-hover:bg-[#282828] transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-3">
           <FileText className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
         </div>
         <div className="flex flex-col transition-all duration-300 group-hover:translate-x-1">
-          <span className="font-medium text-gray-800 group-hover:text-blue-700">Build Resume</span>
-          <span className="text-xs text-gray-500 group-hover:text-blue-500">Create a professional resume</span>
+          <span className="font-medium text-white group-hover:text-[#FFC107]">Build Resume</span>
+          <span className="text-xs text-[#A0A0A0] group-hover:text-[#F57C00]">Create a professional resume</span>
         </div>
       </Link>
     </DropdownMenuItem>
 
     <DropdownMenuItem asChild>
-      <Link href="/cover-letter" className="flex items-center gap-3 hover:bg-indigo-50 p-3 rounded-lg group transition-all duration-300 hover:shadow-md">
-        <div className="p-2 bg-indigo-100 text-indigo-600 rounded-lg group-hover:bg-indigo-200 transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-3">
+      <Link href="/cover-letter" className="flex items-center gap-3 hover:bg-[#1A1A1A] p-3 rounded-lg group transition-all duration-300 hover:shadow-md">
+        <div className="p-2 bg-[#1A1A1A] text-[#F57C00] rounded-lg group-hover:bg-[#282828] transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-3">
           <PenBox className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
         </div>
         <div className="flex flex-col transition-all duration-300 group-hover:translate-x-1">
@@ -309,7 +305,7 @@ export default async function Header() {
                 }}
                 afterSignOutUrl="/"
               />
-              <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full transition-all duration-300 opacity-0 group-hover:w-8 group-hover:opacity-100"></div>
+              <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-[#1565C0] rounded-full transition-all duration-300 opacity-0 group-hover:w-8 group-hover:opacity-100"></div>
             </div>
           </SignedIn>
         </div>

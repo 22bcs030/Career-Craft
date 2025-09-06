@@ -179,24 +179,24 @@ export default function SimpleTodoPage() {
 
   const getPriorityColor = (priority) => {
     switch (priority) {
-      case "high": return "bg-red-500";
-      case "medium": return "bg-amber-500";
-      case "low": return "bg-green-500";
-      default: return "bg-slate-500";
+      case "high": return "bg-[#C62828]";
+      case "medium": return "bg-[#F57C00]";
+      case "low": return "bg-[#FFC107]";
+      default: return "bg-[#282828]";
     }
   };
 
   return (
     <div className="container mx-auto p-6 max-w-5xl">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Task Management</h1>
-        <p className="text-muted-foreground">
+        <h1 className="text-3xl font-bold mb-2 bg-gradient-to-r from-[#C62828] via-[#F57C00] to-[#FFC107] bg-clip-text text-transparent">Task Management</h1>
+        <p className="text-[#A0A0A0]">
           Organize your interview preparation and job search tasks.
         </p>
       </div>
 
       {/* Progress Section */}
-      <Card className="mb-6">
+      <Card className="mb-6 bg-[#121212] border border-[#282828]">
         <CardContent className="pt-6">
           <div className="flex justify-between items-center mb-2">
             <div className="text-sm text-muted-foreground">
@@ -211,9 +211,9 @@ export default function SimpleTodoPage() {
       </Card>
 
       {/* Add Todo Form */}
-      <Card className="mb-6">
+      <Card className="mb-6 bg-[#121212] border border-[#282828]">
         <CardHeader>
-          <CardTitle className="text-xl">Add New Task</CardTitle>
+          <CardTitle className="text-xl text-white">Add New Task</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleAddTodo} className="flex flex-col gap-4">
@@ -224,7 +224,11 @@ export default function SimpleTodoPage() {
                 onChange={(e) => setNewTodo(e.target.value)}
                 className="flex-1"
               />
-              <Button type="submit" disabled={!newTodo.trim()}>
+              <Button 
+                type="submit" 
+                disabled={!newTodo.trim()}
+                className="bg-gradient-to-r from-[#C62828] to-[#F57C00] text-white hover:opacity-90 border-none"
+              >
                 <Plus className="h-4 w-4 mr-2" /> Add
               </Button>
             </div>
@@ -232,8 +236,8 @@ export default function SimpleTodoPage() {
             <div className="flex gap-2 flex-wrap">
               <Popover>
                 <PopoverTrigger asChild>
-                  <Button variant="outline" className="text-xs h-8">
-                    <Tag className="h-3 w-3 mr-2" />
+                  <Button variant="outline" className="text-xs h-8 bg-[#1A1A1A] text-[#E0E0E0] border-[#282828] hover:bg-[#282828] hover:text-[#FFC107]">
+                    <Tag className="h-3 w-3 mr-2 text-[#F57C00]" />
                     {selectedCategory || "Category"}
                   </Button>
                 </PopoverTrigger>
@@ -270,10 +274,10 @@ export default function SimpleTodoPage() {
       </Card>
 
       {/* Todo List */}
-      <Card>
+      <Card className="bg-[#121212] border border-[#282828]">
         <CardHeader className="pb-3">
           <div className="flex justify-between items-center">
-            <CardTitle className="text-xl">Your Tasks</CardTitle>
+            <CardTitle className="text-xl text-white">Your Tasks</CardTitle>
             <div className="flex gap-2">
               <div className="relative">
                 <Search className="h-4 w-4 absolute left-2.5 top-2.5 text-muted-foreground" />
@@ -288,10 +292,10 @@ export default function SimpleTodoPage() {
           </div>
           
           <Tabs defaultValue="all" value={filter} onValueChange={setFilter} className="w-full">
-            <TabsList className="grid grid-cols-3 w-full">
-              <TabsTrigger value="all">All</TabsTrigger>
-              <TabsTrigger value="active">Active</TabsTrigger>
-              <TabsTrigger value="completed">Completed</TabsTrigger>
+            <TabsList className="grid grid-cols-3 w-full bg-[#1A1A1A] border border-[#282828]">
+              <TabsTrigger value="all" className="data-[state=active]:bg-[#282828] data-[state=active]:text-[#FFC107]">All</TabsTrigger>
+              <TabsTrigger value="active" className="data-[state=active]:bg-[#282828] data-[state=active]:text-[#FFC107]">Active</TabsTrigger>
+              <TabsTrigger value="completed" className="data-[state=active]:bg-[#282828] data-[state=active]:text-[#FFC107]">Completed</TabsTrigger>
             </TabsList>
           </Tabs>
           

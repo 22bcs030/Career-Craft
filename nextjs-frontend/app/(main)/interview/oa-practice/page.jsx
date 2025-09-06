@@ -240,31 +240,31 @@ export default function OAPracticePage() {
         className="space-y-6"
       >
         {/* Progress bar */}
-        <div className="w-full bg-gray-100 rounded-full h-2.5 mb-4">
+        <div className="w-full bg-[#282828] rounded-full h-2.5 mb-4">
           <motion.div
-            className="bg-blue-600 h-2.5 rounded-full"
+            className="bg-[#1565C0] h-2.5 rounded-full"
             initial={{ width: 0 }}
             animate={{ width: `${progress}%` }}
             transition={{ duration: 0.5 }}
           />
         </div>
 
-        <Card className="w-full max-w-3xl mx-auto bg-gradient-to-br from-white to-blue-50 shadow-lg">
-          <CardHeader className="border-b">
+        <Card className="w-full max-w-3xl mx-auto bg-[#121212] border-[#282828] shadow-lg">
+          <CardHeader className="border-b border-[#282828]">
             <div className="flex justify-between items-center">
               <div className="space-y-2">
-                <CardTitle className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                <CardTitle className="text-2xl font-bold bg-gradient-to-r from-[#1565C0] to-[#6A1B9A] bg-clip-text text-transparent">
                   Question {currentQuestion + 1} of {questions.length}
                 </CardTitle>
                 <div className="flex items-center gap-2">
                   <Badge variant="secondary" className={cn(
                     "text-sm",
-                    questionType === "mcq" && "bg-blue-100 text-blue-800",
-                    questionType === "fill" && "bg-green-100 text-green-800"
+                    questionType === "mcq" && "bg-[#1565C0]/20 text-[#1565C0]",
+                    questionType === "fill" && "bg-[#388E3C]/20 text-[#4CAF50]"
                   )}>
                     {questionType.toUpperCase()}
                   </Badge>
-                  <Badge variant="outline" className="text-sm">
+                  <Badge variant="outline" className="text-sm border-[#282828] text-[#B0B0B0]">
                     {difficulty.toUpperCase()}
                   </Badge>
                 </div>
@@ -274,7 +274,7 @@ export default function OAPracticePage() {
                   <TooltipTrigger asChild>
                     <div className={cn(
                       "flex items-center gap-2 px-3 py-1 rounded-full",
-                      timeLeft <= 15 ? "bg-red-100 text-red-500 animate-pulse" : "bg-blue-100 text-blue-500"
+                      timeLeft <= 15 ? "bg-[#D32F2F]/20 text-[#FF5252] animate-pulse" : "bg-[#1565C0]/20 text-[#42A5F5]"
                     )}>
                       <Timer className="h-4 w-4" />
                       <span className="font-medium">{timeLeft}s</span>
@@ -290,7 +290,7 @@ export default function OAPracticePage() {
 
           <CardContent className="space-y-6 py-6">
             <div className="space-y-4">
-              <p className="text-lg font-medium text-gray-800">{question.question}</p>
+              <p className="text-lg font-medium text-white">{question.question}</p>
               
               {questionType === "mcq" && (
                 <RadioGroup
@@ -303,10 +303,10 @@ export default function OAPracticePage() {
                       key={index}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="flex items-center space-x-2 p-4 rounded-lg border border-gray-200 hover:border-blue-500 hover:bg-blue-50/50 transition-all cursor-pointer"
+                      className="flex items-center space-x-2 p-4 rounded-lg border border-[#282828] hover:border-[#1565C0] bg-[#121212] hover:bg-[#1A1A24] transition-all cursor-pointer"
                     >
-                      <RadioGroupItem value={option} id={`option-${index}`} />
-                      <label htmlFor={`option-${index}`} className="flex-1 cursor-pointer">
+                      <RadioGroupItem value={option} id={`option-${index}`} className="text-[#1565C0]" />
+                      <label htmlFor={`option-${index}`} className="flex-1 cursor-pointer text-white">
                         {option}
                       </label>
                     </motion.div>
@@ -319,7 +319,7 @@ export default function OAPracticePage() {
                   value={answers[currentQuestion] || ""}
                   onChange={(e) => handleAnswerChange(currentQuestion, e.target.value)}
                   placeholder="Type your answer here..."
-                  className="w-full text-lg p-4"
+                  className="w-full text-lg p-4 bg-[#121212] border-[#282828] text-white focus:border-[#1565C0]"
                 />
               )}
             </div>
@@ -574,7 +574,7 @@ export default function OAPracticePage() {
                                 <Badge variant="outline">{question.topic}</Badge>
                               </div>
                             </div>
-                            <p className="text-lg">{question.question}</p>
+                            <p className="text-lg text-white">{question.question}</p>
                             <div className="space-y-2">
                               <p><span className="font-semibold">Your Answer:</span> {answers[index]}</p>
                               <p><span className="font-semibold">Correct Answer:</span> {question.correctAnswer}</p>
@@ -673,58 +673,58 @@ export default function OAPracticePage() {
         animate={{ opacity: 1 }}
         className="container mx-auto px-4 py-8"
       >
-        <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent text-center">
+        <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-[#1565C0] to-[#6A1B9A] bg-clip-text text-transparent text-center">
           Online Assessment Practice
         </h1>
-        <Card className="w-full max-w-2xl mx-auto bg-gradient-to-br from-white to-blue-50 shadow-lg">
+        <Card className="w-full max-w-2xl mx-auto bg-[#121212] border border-[#282828] shadow-lg">
           <CardHeader>
-            <CardTitle className="text-2xl font-bold text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <CardTitle className="text-2xl font-bold text-center bg-gradient-to-r from-[#1565C0] to-[#6A1B9A] bg-clip-text text-transparent">
               Configure Your Practice Test
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">Skills (comma-separated)</label>
+              <label className="text-sm font-medium text-white">Skills (comma-separated)</label>
               <Input
                 value={skills}
                 onChange={(e) => setSkills(e.target.value)}
                 placeholder="e.g., JavaScript, React, Node.js, Python"
-                className="w-full"
+                className="w-full bg-[#1A1A24] border-[#282828] text-white placeholder:text-[#707070]"
               />
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">Number of Questions</label>
+              <label className="text-sm font-medium text-white">Number of Questions</label>
               <Select
                 value={questionCount.toString()}
                 onValueChange={(value) => setQuestionCount(parseInt(value))}
               >
-                <SelectTrigger className="w-full">
+                <SelectTrigger className="w-full bg-[#1A1A24] border-[#282828] text-white">
                   <SelectValue placeholder="Select number of questions" />
                 </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="5">5 Questions</SelectItem>
-                  <SelectItem value="10">10 Questions</SelectItem>
-                  <SelectItem value="20">20 Questions</SelectItem>
-                  <SelectItem value="30">30 Questions</SelectItem>
-                  <SelectItem value="50">50 Questions</SelectItem>
+                <SelectContent className="bg-[#121212] border-[#282828] text-white">
+                  <SelectItem value="5" className="hover:bg-[#1565C0]/30 focus:bg-[#1565C0]/40">5 Questions</SelectItem>
+                  <SelectItem value="10" className="hover:bg-[#1565C0]/30 focus:bg-[#1565C0]/40">10 Questions</SelectItem>
+                  <SelectItem value="20" className="hover:bg-[#1565C0]/30 focus:bg-[#1565C0]/40">20 Questions</SelectItem>
+                  <SelectItem value="30" className="hover:bg-[#1565C0]/30 focus:bg-[#1565C0]/40">30 Questions</SelectItem>
+                  <SelectItem value="50" className="hover:bg-[#1565C0]/30 focus:bg-[#1565C0]/40">50 Questions</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">Difficulty Level</label>
+              <label className="text-sm font-medium text-white">Difficulty Level</label>
               <Select
                 value={difficulty}
                 onValueChange={setDifficulty}
               >
-                <SelectTrigger className="w-full">
+                <SelectTrigger className="w-full bg-[#1A1A24] border-[#282828] text-white">
                   <SelectValue placeholder="Select difficulty" />
                 </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="easy">Easy</SelectItem>
-                  <SelectItem value="medium">Medium</SelectItem>
-                  <SelectItem value="hard">Hard</SelectItem>
+                <SelectContent className="bg-[#121212] border-[#282828] text-white">
+                  <SelectItem value="easy" className="hover:bg-[#388E3C]/30 focus:bg-[#388E3C]/40">Easy</SelectItem>
+                  <SelectItem value="medium" className="hover:bg-[#FFA000]/30 focus:bg-[#FFA000]/40">Medium</SelectItem>
+                  <SelectItem value="hard" className="hover:bg-[#D32F2F]/30 focus:bg-[#D32F2F]/40">Hard</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -732,7 +732,7 @@ export default function OAPracticePage() {
             <Button
               onClick={handleStartTest}
               disabled={loading}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+              className="w-full bg-gradient-to-r from-[#1565C0] to-[#6A1B9A] hover:opacity-90 text-white"
             >
               {loading ? (
                 <>

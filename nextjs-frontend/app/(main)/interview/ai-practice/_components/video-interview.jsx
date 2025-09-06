@@ -744,66 +744,67 @@ export default function VideoInterview() {
                 <Label>Interview Mode</Label>
                 <div className="grid grid-cols-2 gap-4 pt-2">
                   <div 
-                    className={`border rounded-lg p-4 cursor-pointer transition-all ${interviewMode === "resume" ? "border-blue-500 bg-blue-50" : "border-gray-200 hover:border-gray-300"}`}
+                    className={`border rounded-lg p-4 cursor-pointer transition-all ${interviewMode === "resume" ? "border-[#1565C0] bg-[#121225]" : "border-[#282828] hover:border-[#404040]"}`}
                     onClick={() => setInterviewMode("resume")}
                   >
                     <div className="flex items-center justify-center mb-2">
-                      <Upload className="h-8 w-8 text-blue-500" />
+                      <Upload className="h-8 w-8 text-[#1565C0]" />
                     </div>
-                    <h3 className="font-medium text-center mb-2">Resume-Based</h3>
-                    <p className="text-sm text-gray-500 text-center">Upload your resume for personalized questions based on your experience</p>
+                    <h3 className="font-medium text-center mb-2 text-white">Resume-Based</h3>
+                    <p className="text-sm text-[#B0B0B0] text-center">Upload your resume for personalized questions based on your experience</p>
                   </div>
                   
                   <div 
-                    className={`border rounded-lg p-4 cursor-pointer transition-all ${interviewMode === "skills" ? "border-blue-500 bg-blue-50" : "border-gray-200 hover:border-gray-300"}`}
+                    className={`border rounded-lg p-4 cursor-pointer transition-all ${interviewMode === "skills" ? "border-[#1565C0] bg-[#121225]" : "border-[#282828] hover:border-[#404040]"}`}
                     onClick={() => setInterviewMode("skills")}
                   >
                     <div className="flex items-center justify-center mb-2">
-                      <User className="h-8 w-8 text-blue-500" />
+                      <User className="h-8 w-8 text-[#1565C0]" />
                     </div>
-                    <h3 className="font-medium text-center mb-2">Skills-Based</h3>
-                    <p className="text-sm text-gray-500 text-center">Enter your skills for questions tailored to your technical expertise</p>
+                    <h3 className="font-medium text-center mb-2 text-white">Skills-Based</h3>
+                    <p className="text-sm text-[#B0B0B0] text-center">Enter your skills for questions tailored to your technical expertise</p>
                   </div>
                 </div>
               </div>
               
               {interviewMode === "resume" ? (
-                <div className="space-y-2 p-4 border rounded-lg bg-gray-50">
-                  <Label htmlFor="resumeUpload">Upload Resume (PDF)</Label>
+                <div className="space-y-2 p-4 border border-[#282828] rounded-lg bg-[#121212]">
+                  <Label htmlFor="resumeUpload" className="text-white">Upload Resume (PDF)</Label>
                   <Input
                     id="resumeUpload"
                     type="file"
                     accept="application/pdf"
                     onChange={handleResumeUpload}
+                    className="bg-[#121212] border-[#282828] text-white focus:border-[#1565C0]"
                   />
                   {resumeFile && (
                     <p className="text-sm text-green-500">{resumeFile.name} uploaded</p>
                   )}
                 </div>
               ) : (
-                <div className="space-y-2 p-4 border rounded-lg bg-gray-50">
-                  <Label htmlFor="skills">Key Skills</Label>
+                <div className="space-y-2 p-4 border border-[#282828] rounded-lg bg-[#121212]">
+                  <Label htmlFor="skills" className="text-white">Key Skills</Label>
                   <Textarea
                     id="skills"
                     placeholder="Enter your key skills, separated by commas (e.g., JavaScript, React, Node.js)"
                     value={skills}
                     onChange={(e) => setSkills(e.target.value)}
-                    className="min-h-[100px]"
+                    className="min-h-[100px] bg-[#121212] border-[#282828] text-white focus:border-[#1565C0]"
                   />
                 </div>
               )}
               
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label>Experience Level</Label>
+                  <Label className="text-white">Experience Level</Label>
                   <Select 
                     value={experienceLevel} 
                     onValueChange={setExperienceLevel}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="bg-[#121212] border-[#282828] text-white focus:border-[#1565C0]">
                       <SelectValue placeholder="Select experience level" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-[#121212] border-[#282828] text-white">
                       <SelectItem value="fresher">Fresher</SelectItem>
                       <SelectItem value="junior">Junior (1-3 years)</SelectItem>
                       <SelectItem value="mid">Mid-level (3-5 years)</SelectItem>
@@ -813,15 +814,15 @@ export default function VideoInterview() {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label>Interview Type</Label>
+                  <Label className="text-white">Interview Type</Label>
                   <Select 
                     value={interviewType} 
                     onValueChange={setInterviewType}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="bg-[#121212] border-[#282828] text-white focus:border-[#1565C0]">
                       <SelectValue placeholder="Select interview type" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-[#121212] border-[#282828] text-white">
                       <SelectItem value="technical">Technical</SelectItem>
                       <SelectItem value="behavioral">Behavioral</SelectItem>
                       <SelectItem value="hr">HR</SelectItem>
@@ -831,7 +832,7 @@ export default function VideoInterview() {
                 </div>
               </div>
               
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full bg-[#1565C0] hover:bg-[#1976D2] text-white">
                 <Upload className="mr-2 h-4 w-4" />
                 Submit and Continue
               </Button>
@@ -841,10 +842,10 @@ export default function VideoInterview() {
       ) : (
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card className="md:col-span-2">
-              <CardHeader>
-                <CardTitle>Video Interview</CardTitle>
-                <CardDescription>
+            <Card className="md:col-span-2 bg-[#121212] border-[#282828] shadow-lg">
+              <CardHeader className="border-b border-[#282828]">
+                <CardTitle className="text-white">Video Interview</CardTitle>
+                <CardDescription className="text-[#B0B0B0]">
                   {isCallActive 
                     ? "You are now in a video call with the AI interviewer" 
                     : "Start the video call to begin your interview"}
@@ -852,7 +853,7 @@ export default function VideoInterview() {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="relative aspect-video bg-black rounded-lg overflow-hidden">
+                  <div className="relative aspect-video bg-black rounded-lg overflow-hidden border border-[#282828]">
                     <video
                       ref={userVideoRef}
                       autoPlay
@@ -861,27 +862,27 @@ export default function VideoInterview() {
                       className="absolute inset-0 w-full h-full object-cover"
                     />
                     {!isVideoOn && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-gray-800">
+                      <div className="absolute inset-0 flex items-center justify-center bg-[#1A1A1A]">
                         <User size={48} className="text-white opacity-50" />
                       </div>
                     )}
-                    <div className="absolute bottom-2 left-2 bg-blue-500 text-white text-xs px-2 py-1 rounded">
+                    <div className="absolute bottom-2 left-2 bg-[#1565C0] text-white text-xs px-2 py-1 rounded">
                       You
                     </div>
                   </div>
                   
-                  <div className="relative aspect-video bg-black rounded-lg overflow-hidden">
+                  <div className="relative aspect-video bg-black rounded-lg overflow-hidden border border-[#282828]">
                     <video
                       ref={aiVideoRef}
                       autoPlay
                       playsInline
                       className="absolute inset-0 w-full h-full object-cover"
                     />
-                    <div className="absolute bottom-2 left-2 bg-green-500 text-white text-xs px-2 py-1 rounded">
+                    <div className="absolute bottom-2 left-2 bg-[#388E3C] text-white text-xs px-2 py-1 rounded">
                       AI Interviewer
                     </div>
                     {isAiSpeaking && (
-                      <div className="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full animate-pulse">
+                      <div className="absolute top-2 right-2 bg-[#D32F2F] text-white text-xs px-2 py-1 rounded-full animate-pulse">
                         Speaking
                       </div>
                     )}
@@ -890,13 +891,13 @@ export default function VideoInterview() {
                 
                 <div className="flex justify-center mt-4 space-x-4">
                   {!isCallActive ? (
-                    <Button onClick={startVideoCall}>
+                    <Button onClick={startVideoCall} className="bg-[#1565C0] hover:bg-[#1976D2] text-white">
                       <Video className="mr-2 h-4 w-4" />
                       Start Video Call
                     </Button>
                   ) : (
                     <>
-                      <Button variant="outline" onClick={toggleMute}>
+                      <Button variant="outline" onClick={toggleMute} className="bg-[#121212] border-[#282828] text-white hover:bg-[#1A1A1A] hover:text-[#1565C0]">
                         {isMuted ? (
                           <>
                             <Mic className="mr-2 h-4 w-4" />
@@ -910,7 +911,7 @@ export default function VideoInterview() {
                         )}
                       </Button>
                       
-                      <Button variant="outline" onClick={toggleVideo}>
+                      <Button variant="outline" onClick={toggleVideo} className="bg-[#121212] border-[#282828] text-white hover:bg-[#1A1A1A] hover:text-[#1565C0]">
                         {isVideoOn ? (
                           <>
                             <VideoOff className="mr-2 h-4 w-4" />
@@ -924,7 +925,7 @@ export default function VideoInterview() {
                         )}
                       </Button>
                       
-                      <Button variant="destructive" onClick={endCall}>
+                      <Button variant="destructive" onClick={endCall} className="hover:bg-red-700">
                         End Call
                       </Button>
                     </>
@@ -933,14 +934,14 @@ export default function VideoInterview() {
               </CardContent>
             </Card>
             
-            <Card>
-              <CardHeader>
-                <CardTitle>Interview Progress</CardTitle>
+            <Card className="bg-[#121212] border-[#282828] text-white shadow-lg">
+              <CardHeader className="bg-gradient-to-r from-[#1565C0]/10 to-[#6A1B9A]/10 border-b border-[#282828]">
+                <CardTitle className="bg-gradient-to-r from-[#1565C0] to-[#6A1B9A] bg-clip-text text-transparent">Interview Progress</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <Progress value={interviewProgress} className="h-2" />
-                  <p className="text-center text-sm text-muted-foreground">
+                  <Progress value={interviewProgress} className="h-2 bg-[#282828]" />
+                  <p className="text-center text-sm text-[#A0A0A0]">
                     {interviewProgress}% Complete
                   </p>
                   
@@ -983,12 +984,12 @@ export default function VideoInterview() {
               </CardContent>
             </Card>
             
-            <Card>
-              <CardHeader>
-                <CardTitle>Interview Tips</CardTitle>
+            <Card className="bg-[#121212] border-[#282828] text-white shadow-lg">
+              <CardHeader className="bg-gradient-to-r from-[#6A1B9A]/10 to-[#C62828]/10 border-b border-[#282828]">
+                <CardTitle className="bg-gradient-to-r from-[#6A1B9A] to-[#C62828] bg-clip-text text-transparent">Interview Tips</CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 list-disc list-inside text-sm">
+                <ul className="space-y-2 list-disc list-inside text-sm text-[#A0A0A0]">
                   <li>Speak clearly and at a moderate pace</li>
                   <li>Maintain eye contact with the camera</li>
                   <li>Use the STAR method for behavioral questions</li>
@@ -1001,30 +1002,30 @@ export default function VideoInterview() {
           </div>
           
           {feedback && (
-            <Card>
-              <CardHeader>
-                <CardTitle>Question Feedback</CardTitle>
+            <Card className="bg-[#121212] border-[#282828] text-white shadow-lg">
+              <CardHeader className="bg-gradient-to-r from-[#1565C0]/10 to-[#6A1B9A]/10 border-b border-[#282828]">
+                <CardTitle className="bg-gradient-to-r from-[#1565C0] to-[#6A1B9A] bg-clip-text text-transparent">Question Feedback</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   <div>
-                    <h3 className="font-medium mb-2">Technical Accuracy</h3>
-                    <Progress value={feedback.technicalAccuracy} className="h-2" />
-                    <p className="text-right text-xs text-muted-foreground">{feedback.technicalAccuracy}%</p>
+                    <h3 className="font-medium mb-2 text-white">Technical Accuracy</h3>
+                    <Progress value={feedback.technicalAccuracy} className="h-2 bg-[#282828]" />
+                    <p className="text-right text-xs text-[#A0A0A0]">{feedback.technicalAccuracy}%</p>
                   </div>
                   <div>
-                    <h3 className="font-medium mb-2">Communication</h3>
-                    <Progress value={feedback.communication} className="h-2" />
-                    <p className="text-right text-xs text-muted-foreground">{feedback.communication}%</p>
+                    <h3 className="font-medium mb-2 text-white">Communication</h3>
+                    <Progress value={feedback.communication} className="h-2 bg-[#282828]" />
+                    <p className="text-right text-xs text-[#A0A0A0]">{feedback.communication}%</p>
                   </div>
                   <div>
-                    <h3 className="font-medium mb-2">Problem Solving</h3>
-                    <Progress value={feedback.problemSolving} className="h-2" />
-                    <p className="text-right text-xs text-muted-foreground">{feedback.problemSolving}%</p>
+                    <h3 className="font-medium mb-2 text-white">Problem Solving</h3>
+                    <Progress value={feedback.problemSolving} className="h-2 bg-[#282828]" />
+                    <p className="text-right text-xs text-[#A0A0A0]">{feedback.problemSolving}%</p>
                   </div>
                   <div className="mt-4">
-                    <h3 className="font-medium mb-2">Detailed Feedback</h3>
-                    <p className="text-muted-foreground">{feedback.detailedFeedback}</p>
+                    <h3 className="font-medium mb-2 text-white">Detailed Feedback</h3>
+                    <p className="text-[#B0B0B0]">{feedback.detailedFeedback}</p>
                   </div>
                 </div>
               </CardContent>
@@ -1032,37 +1033,37 @@ export default function VideoInterview() {
           )}
           
           {interviewReport && (
-            <Card>
-              <CardHeader>
-                <CardTitle>Final Interview Report</CardTitle>
-                <CardDescription>
+            <Card className="bg-[#121212] border-[#282828] text-white shadow-lg">
+              <CardHeader className="bg-gradient-to-r from-[#1565C0]/10 to-[#6A1B9A]/10 border-b border-[#282828]">
+                <CardTitle className="bg-gradient-to-r from-[#1565C0] to-[#6A1B9A] bg-clip-text text-transparent">Final Interview Report</CardTitle>
+                <CardDescription className="text-[#B0B0B0]">
                   A personalized assessment of your interview performance with actionable insights for growth
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-6">
-                  <Alert className="bg-blue-50 border-blue-200">
-                    <Info className="h-4 w-4 text-blue-500" />
-                    <AlertTitle className="text-blue-700">Overall Performance</AlertTitle>
-                    <AlertDescription>
+                  <Alert className="bg-[#1A1A24] border-[#1565C0]/30">
+                    <Info className="h-4 w-4 text-[#1565C0]" />
+                    <AlertTitle className="text-white">Overall Performance</AlertTitle>
+                    <AlertDescription className="text-[#B0B0B0]">
                       {interviewReport.overallPerformance}
                     </AlertDescription>
                   </Alert>
                   
                   <Tabs defaultValue="strengths" className="w-full">
-                    <TabsList className="grid grid-cols-3 mb-4">
-                      <TabsTrigger value="strengths">Strengths</TabsTrigger>
-                      <TabsTrigger value="improvements">Areas to Improve</TabsTrigger>
-                      <TabsTrigger value="growth">Growth Plan</TabsTrigger>
+                    <TabsList className="grid grid-cols-3 mb-4 bg-[#1A1A24] text-[#B0B0B0]">
+                      <TabsTrigger value="strengths" className="data-[state=active]:bg-[#1565C0] data-[state=active]:text-white">Strengths</TabsTrigger>
+                      <TabsTrigger value="improvements" className="data-[state=active]:bg-[#1565C0] data-[state=active]:text-white">Areas to Improve</TabsTrigger>
+                      <TabsTrigger value="growth" className="data-[state=active]:bg-[#1565C0] data-[state=active]:text-white">Growth Plan</TabsTrigger>
                     </TabsList>
                     
                     <TabsContent value="strengths" className="space-y-4">
-                      <div className="p-4 border rounded-lg bg-green-50">
-                        <h3 className="font-medium mb-3 text-green-700">Your Key Strengths</h3>
-                        <ul className="space-y-2">
+                      <div className="p-4 border border-[#282828] rounded-lg bg-[#121225]">
+                        <h3 className="font-medium mb-3 text-[#4CAF50]">Your Key Strengths</h3>
+                        <ul className="space-y-2 text-[#B0B0B0]">
                           {interviewReport.strengths.map((strength, index) => (
                             <li key={index} className="flex items-start">
-                              <span className="mr-2 mt-1 text-green-500">✓</span>
+                              <span className="mr-2 mt-1 text-[#4CAF50]">✓</span>
                               <span>{strength}</span>
                             </li>
                           ))}
@@ -1071,12 +1072,12 @@ export default function VideoInterview() {
                     </TabsContent>
                     
                     <TabsContent value="improvements" className="space-y-4">
-                      <div className="p-4 border rounded-lg bg-amber-50">
-                        <h3 className="font-medium mb-3 text-amber-700">Areas for Improvement</h3>
-                        <ul className="space-y-2">
+                      <div className="p-4 border border-[#282828] rounded-lg bg-[#121225]">
+                        <h3 className="font-medium mb-3 text-[#FFC107]">Areas for Improvement</h3>
+                        <ul className="space-y-2 text-[#B0B0B0]">
                           {interviewReport.areasForImprovement.map((area, index) => (
                             <li key={index} className="flex items-start">
-                              <span className="mr-2 mt-1 text-amber-500">→</span>
+                              <span className="mr-2 mt-1 text-[#FFC107]">→</span>
                               <span>{area}</span>
                             </li>
                           ))}
@@ -1085,12 +1086,12 @@ export default function VideoInterview() {
                     </TabsContent>
                     
                     <TabsContent value="growth" className="space-y-4">
-                      <div className="p-4 border rounded-lg bg-purple-50">
-                        <h3 className="font-medium mb-3 text-purple-700">Personalized Recommendations</h3>
-                        <ul className="space-y-2">
+                      <div className="p-4 border border-[#282828] rounded-lg bg-[#121225]">
+                        <h3 className="font-medium mb-3 text-[#9C27B0]">Personalized Recommendations</h3>
+                        <ul className="space-y-2 text-[#B0B0B0]">
                           {interviewReport.recommendations.map((rec, index) => (
                             <li key={index} className="flex items-start">
-                              <span className="mr-2 mt-1 text-purple-500">•</span>
+                              <span className="mr-2 mt-1 text-[#9C27B0]">•</span>
                               <span>{rec}</span>
                             </li>
                           ))}
@@ -1098,12 +1099,12 @@ export default function VideoInterview() {
                       </div>
                       
                       {interviewReport.resources && (
-                        <div className="p-4 border rounded-lg bg-blue-50">
-                          <h3 className="font-medium mb-3 text-blue-700">Recommended Resources</h3>
-                          <ul className="space-y-2">
+                        <div className="p-4 border border-[#282828] rounded-lg bg-[#121225]">
+                          <h3 className="font-medium mb-3 text-[#2196F3]">Recommended Resources</h3>
+                          <ul className="space-y-2 text-[#B0B0B0]">
                             {interviewReport.resources.map((resource, index) => (
                               <li key={index} className="flex items-start">
-                                <span className="mr-2 mt-1 text-blue-500">📚</span>
+                                <span className="mr-2 mt-1 text-[#2196F3]">📚</span>
                                 <span>{resource}</span>
                               </li>
                             ))}
@@ -1111,9 +1112,9 @@ export default function VideoInterview() {
                         </div>
                       )}
                       
-                      <div className="mt-4 p-4 border border-dashed rounded-lg">
-                        <h3 className="font-medium mb-2 text-center">Next Steps</h3>
-                        <p className="text-center text-muted-foreground">
+                      <div className="mt-4 p-4 border border-[#282828] border-dashed rounded-lg bg-[#121225]">
+                        <h3 className="font-medium mb-2 text-center text-white">Next Steps</h3>
+                        <p className="text-center text-[#B0B0B0]">
                           Practice regularly with our AI interviewer to track your improvement over time.
                           Consider focusing on one area at a time for maximum growth.  
                         </p>

@@ -294,10 +294,10 @@ export default function CodingPracticePage() {
 
       <div className={`grid ${isFullscreen ? 'grid-cols-1' : 'grid-cols-1 lg:grid-cols-4'} gap-6`}>
         {!isFullscreen && (
-          <Card className="lg:col-span-1">
+          <Card className="lg:col-span-1 bg-[#121212] border border-[#282828] hover:bg-[#1A1A24] transition-colors">
             <CardHeader>
               <CardTitle>Problem Selection</CardTitle>
-              <CardDescription>Configure your practice session</CardDescription>
+              <CardDescription className="text-[#B0B0B0]">Configure your practice session</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="space-y-2">
@@ -392,11 +392,11 @@ export default function CodingPracticePage() {
 
         <div className={`${isFullscreen ? 'col-span-1' : 'lg:col-span-3'}`}>
           {currentProblem ? (
-            <Card className="h-full">
+            <Card className="h-full bg-[#121212] border border-[#282828] hover:bg-[#1A1A24] transition-colors">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <div>
                   <CardTitle>{currentProblem.title}</CardTitle>
-                  <CardDescription className="mt-1">
+                  <CardDescription className="mt-1 text-[#B0B0B0]">
                     <div className="flex flex-wrap gap-2 mt-1">
                       <Badge variant="secondary">{currentProblem.difficulty}</Badge>
                       <Badge variant="outline">{currentProblem.topic}</Badge>
@@ -465,13 +465,13 @@ export default function CodingPracticePage() {
                                   <div className="mt-2 space-y-2">
                                     <div>
                                       <span className="font-medium">Input:</span>
-                                      <pre className="mt-1 p-2 bg-secondary/50 rounded-md overflow-x-auto">
+                                      <pre className="mt-1 p-2 bg-[#1A1A24] border border-[#282828] rounded-md overflow-x-auto">
                                         {example.input}
                                       </pre>
                                     </div>
                                     <div>
                                       <span className="font-medium">Output:</span>
-                                      <pre className="mt-1 p-2 bg-secondary/50 rounded-md overflow-x-auto">
+                                      <pre className="mt-1 p-2 bg-[#1A1A24] border border-[#282828] rounded-md overflow-x-auto">
                                         {example.output}
                                       </pre>
                                     </div>
@@ -517,6 +517,12 @@ export default function CodingPracticePage() {
                           tabSize: 2,
                           wordWrap: "on",
                           suggestOnTriggerCharacters: true,
+                          backgroundColor: "#121212",
+                          scrollbar: {
+                            useShadows: false,
+                            verticalScrollbarSize: 10,
+                            horizontalScrollbarSize: 10,
+                          }
                         }}
                       />
                       <div className="absolute bottom-0 left-0 right-0 p-4 border-t bg-background">
@@ -542,7 +548,7 @@ export default function CodingPracticePage() {
                     <ScrollArea className="h-full pr-4">
                       <div className="space-y-4">
                         {testCases.map((testCase, index) => (
-                          <Card key={index} className="overflow-hidden">
+                          <Card key={index} className="overflow-hidden bg-[#121212] border border-[#282828] hover:bg-[#1A1A24] transition-colors">
                             <CardHeader className="py-3">
                               <div className="flex items-center justify-between">
                                 <CardTitle className="text-base">Test Case {index + 1}</CardTitle>
@@ -558,26 +564,26 @@ export default function CodingPracticePage() {
                             <CardContent className="py-3 space-y-3">
                               <div>
                                 <span className="font-medium">Input:</span>
-                                <pre className="mt-1 p-2 bg-secondary/50 rounded-md overflow-x-auto">
+                                <pre className="mt-1 p-2 bg-[#1A1A24] border border-[#282828] rounded-md overflow-x-auto">
                                   {JSON.stringify(testCase.input, null, 2)}
                                 </pre>
                               </div>
                               <div>
                                 <span className="font-medium">Expected Output:</span>
-                                <pre className="mt-1 p-2 bg-secondary/50 rounded-md overflow-x-auto">
+                                <pre className="mt-1 p-2 bg-[#1A1A24] border border-[#282828] rounded-md overflow-x-auto">
                                   {JSON.stringify(testCase.expectedOutput, null, 2)}
                                 </pre>
                               </div>
                               {results && !results.testCases[index]?.passed && (
                                 <div>
                                   <span className="font-medium">Your Output:</span>
-                                  <pre className="mt-1 p-2 bg-red-50 dark:bg-red-950/20 rounded-md overflow-x-auto">
+                                  <pre className="mt-1 p-2 bg-red-950/30 border border-red-900/50 rounded-md overflow-x-auto">
                                     {JSON.stringify(results.testCases[index]?.output, null, 2)}
                                   </pre>
                                   {results.testCases[index]?.error && (
                                     <div className="mt-2">
                                       <span className="font-medium text-red-500">Error:</span>
-                                      <pre className="mt-1 p-2 bg-red-50 dark:bg-red-950/20 text-red-500 rounded-md overflow-x-auto">
+                                      <pre className="mt-1 p-2 bg-red-950/30 border border-red-900/50 text-red-500 rounded-md overflow-x-auto">
                                         {results.testCases[index].error}
                                       </pre>
                                     </div>
@@ -595,7 +601,7 @@ export default function CodingPracticePage() {
                     <TabsContent value="results" className="p-4 h-[calc(100%-2.5rem)] overflow-auto">
                       <ScrollArea className="h-full pr-4">
                         <div className="space-y-6">
-                          <Card>
+                          <Card className="bg-[#121212] border border-[#282828] hover:bg-[#1A1A24] transition-colors">
                             <CardHeader>
                               <CardTitle>Performance Analysis</CardTitle>
                             </CardHeader>
@@ -620,12 +626,12 @@ export default function CodingPracticePage() {
                                   <h3 className="text-sm font-medium mb-2">Time Complexity</h3>
                                   <div className="flex items-center justify-between">
                                     <div className="flex items-center gap-2">
-                                      <Clock className="h-4 w-4 text-muted-foreground" />
+                                      <Clock className="h-4 w-4 text-[#B0B0B0]" />
                                       <span className="text-sm">Expected:</span>
                                       <span className="text-sm font-medium">{expectedComplexity.time}</span>
                                     </div>
                                     <div className="flex items-center gap-2">
-                                      <Zap className="h-4 w-4 text-muted-foreground" />
+                                      <Zap className="h-4 w-4 text-[#B0B0B0]" />
                                       <span className="text-sm">Your solution:</span>
                                       <span className={`text-sm font-medium ${getComplexityColor(expectedComplexity.time, userComplexity.time)}`}>
                                         {userComplexity.time || "Not analyzed"}
@@ -638,12 +644,12 @@ export default function CodingPracticePage() {
                                   <h3 className="text-sm font-medium mb-2">Space Complexity</h3>
                                   <div className="flex items-center justify-between">
                                     <div className="flex items-center gap-2">
-                                      <Clock className="h-4 w-4 text-muted-foreground" />
+                                      <Clock className="h-4 w-4 text-[#B0B0B0]" />
                                       <span className="text-sm">Expected:</span>
                                       <span className="text-sm font-medium">{expectedComplexity.space}</span>
                                     </div>
                                     <div className="flex items-center gap-2">
-                                      <Zap className="h-4 w-4 text-muted-foreground" />
+                                      <Zap className="h-4 w-4 text-[#B0B0B0]" />
                                       <span className="text-sm">Your solution:</span>
                                       <span className={`text-sm font-medium ${getComplexityColor(expectedComplexity.space, userComplexity.space)}`}>
                                         {userComplexity.space || "Not analyzed"}
@@ -655,7 +661,7 @@ export default function CodingPracticePage() {
                             </CardContent>
                           </Card>
                           
-                          <Card>
+                          <Card className="bg-[#121212] border border-[#282828] hover:bg-[#1A1A24] transition-colors">
                             <CardHeader>
                               <CardTitle>Code Quality</CardTitle>
                             </CardHeader>
@@ -711,16 +717,16 @@ export default function CodingPracticePage() {
               </CardContent>
             </Card>
           ) : (
-            <Card className="h-full flex items-center justify-center">
+            <Card className="h-full flex items-center justify-center bg-[#121212] border border-[#282828] hover:bg-[#1A1A24] transition-colors">
               <CardContent className="py-12 text-center">
-                <div className="mx-auto w-16 h-16 mb-6 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Brain className="h-8 w-8 text-primary" />
+                <div className="mx-auto w-16 h-16 mb-6 rounded-full bg-[#1565C0]/20 flex items-center justify-center">
+                  <Brain className="h-8 w-8 text-[#42A5F5]" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">No Problem Loaded</h3>
-                <p className="text-muted-foreground mb-6">
+                <p className="text-[#B0B0B0] mb-6">
                   Select your preferences and click "Load Problem" to start practicing.
                 </p>
-                <Button onClick={loadProblem} className="mx-auto">
+                <Button onClick={loadProblem} className="mx-auto bg-[#1565C0] hover:bg-[#1976D2] text-white">
                   Load Random Problem
                 </Button>
               </CardContent>

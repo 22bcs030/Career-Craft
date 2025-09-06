@@ -293,7 +293,7 @@ export default function AnalyticsPage() {
           </Card>
 
           <div className="grid gap-6 md:grid-cols-2">
-            <Card>
+            <Card className="bg-[#121212] border border-[#282828] hover:bg-[#1A1A24] transition-colors">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <TrendingUp className="h-5 w-5" />
@@ -307,7 +307,18 @@ export default function AnalyticsPage() {
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="name" />
                       <YAxis />
-                      <Tooltip />
+                      <Tooltip content={({ active, payload }) => {
+                        if (active && payload?.length) {
+                          return (
+                            <div className="bg-[#121212] border border-[#282828] rounded-lg p-2 shadow-md">
+                              <p className="text-sm font-medium text-white">
+                                {payload[0]?.payload.name}: {payload[0]?.value}%
+                              </p>
+                            </div>
+                          );
+                        }
+                        return null;
+                      }} />
                       <Bar dataKey="score" fill="#8884d8" />
                     </BarChart>
                   </ResponsiveContainer>

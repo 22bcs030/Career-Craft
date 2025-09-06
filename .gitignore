@@ -42,6 +42,9 @@ backend/res/lib/python3.10/site-packages/
 .env*.local
 .env
 
+# Documentation and media files
+Docs and media/
+
 # Debug logs
 npm-debug.log*
 yarn-debug.log*

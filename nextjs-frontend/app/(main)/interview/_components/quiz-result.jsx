@@ -14,7 +14,7 @@ export default function QuizResult({
 
   return (
     <div className="mx-auto">
-      <h1 className="flex items-center gap-2 text-3xl gradient-title">
+      <h1 className="flex items-center gap-2 text-3xl text-white">
         <Trophy className="h-6 w-6 text-yellow-500" />
         Quiz Results
       </h1>
@@ -22,38 +22,38 @@ export default function QuizResult({
       <CardContent className="space-y-6">
         {/* Score Overview */}
         <div className="text-center space-y-2">
-          <h3 className="text-2xl font-bold">{result.quizScore.toFixed(1)}%</h3>
-          <Progress value={result.quizScore} className="w-full" />
+          <h3 className="text-2xl font-bold text-white">{result.quizScore.toFixed(1)}%</h3>
+          <Progress value={result.quizScore} className="w-full bg-[#282828]" />
         </div>
 
         {/* Improvement Tip */}
         {result.improvementTip && (
-          <div className="bg-muted p-4 rounded-lg">
-            <p className="font-medium">Improvement Tip:</p>
-            <p className="text-muted-foreground">{result.improvementTip}</p>
+          <div className="bg-[#1A1A24] p-4 rounded-lg border border-[#282828]">
+            <p className="font-medium text-white">Improvement Tip:</p>
+            <p className="text-[#B0B0B0]">{result.improvementTip}</p>
           </div>
         )}
 
         {/* Questions Review */}
         <div className="space-y-4">
-          <h3 className="font-medium">Question Review</h3>
+          <h3 className="font-medium text-white">Question Review</h3>
           {result.questions.map((q, index) => (
-            <div key={index} className="border rounded-lg p-4 space-y-2">
+            <div key={index} className="border border-[#282828] rounded-lg p-4 space-y-2 bg-[#121212]">
               <div className="flex items-start justify-between gap-2">
-                <p className="font-medium">{q.question}</p>
+                <p className="font-medium text-white">{q.question}</p>
                 {q.isCorrect ? (
                   <CheckCircle2 className="h-5 w-5 text-green-500 flex-shrink-0" />
                 ) : (
                   <XCircle className="h-5 w-5 text-red-500 flex-shrink-0" />
                 )}
               </div>
-              <div className="text-sm text-muted-foreground">
+              <div className="text-sm text-[#B0B0B0]">
                 <p>Your answer: {q.userAnswer}</p>
-                {!q.isCorrect && <p>Correct answer: {q.answer}</p>}
+                {!q.isCorrect && <p>Correct answer: <span className="text-green-500">{q.answer}</span></p>}
               </div>
-              <div className="text-sm bg-muted p-2 rounded">
-                <p className="font-medium">Explanation:</p>
-                <p>{q.explanation}</p>
+              <div className="text-sm bg-[#1A1A24] p-2 rounded border border-[#282828]">
+                <p className="font-medium text-white">Explanation:</p>
+                <p className="text-[#B0B0B0]">{q.explanation}</p>
               </div>
             </div>
           ))}
@@ -62,7 +62,7 @@ export default function QuizResult({
 
       {!hideStartNew && (
         <CardFooter>
-          <Button onClick={onStartNew} className="w-full">
+          <Button onClick={onStartNew} className="w-full bg-[#1565C0] hover:bg-[#1976D2] text-white">
             Start New Quiz
           </Button>
         </CardFooter>

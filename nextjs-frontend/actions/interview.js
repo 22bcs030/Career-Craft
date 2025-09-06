@@ -376,7 +376,7 @@ export async function saveQuizResult(questions, answers, score, type = "technica
     const assessmentData = {
       userId: user.id,
       quizScore: normalizedScore,
-      questions: questionResults,
+      questions: JSON.stringify(questionResults), // Convert array to JSON string
       category: categoryMap[type] || "Technical",
       improvementTip: improvementTip || null,
     };
@@ -394,7 +394,7 @@ export async function saveQuizResult(questions, answers, score, type = "technica
     
     // Provide more detailed error information for debugging
     if (error.name === 'PrismaClientValidationError') {
-      console.error("Validation error details:", JSON.stringify(assessmentData, null, 2));
+      console.error("Validation error details:", error.message);
       throw new Error(`Validation error when saving quiz result. Please check the data format.`);
     } else if (error.name === 'PrismaClientKnownRequestError') {
       throw new Error(`Database error: ${error.message}`);
@@ -435,10 +435,20 @@ export async function getAssessments(category = null) {
     const transformedAssessments = assessments.map(assessment => {
       const topicAnalysis = {};
       
+      // Parse the questions string into an array of objects
+      let parsedQuestions = [];
+      try {
+        parsedQuestions = JSON.parse(assessment.questions);
+        // Update the assessment object with parsed questions
+        assessment.questions = parsedQuestions;
+      } catch (e) {
+        console.error("Error parsing questions JSON:", e);
+        assessment.questions = []; // Set to empty array if parsing fails
+      }
+      
       // Process questions to calculate topic-wise performance
-      // Since questions is a Json[] field, we can access it directly
-      if (Array.isArray(assessment.questions)) {
-        assessment.questions.forEach(question => {
+      if (Array.isArray(parsedQuestions)) {
+        parsedQuestions.forEach(question => {
           const topicName = question.topic || 'General';
           if (!topicAnalysis[topicName]) {
             topicAnalysis[topicName] = {

@@ -107,11 +107,11 @@ export default function Quiz({ quizType = "technical", questionCount = 15 }) {
 
   if (!quizData) {
     return (
-      <Card className="mx-2">
+      <Card className="mx-2 bg-[#121212] border-[#282828]">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
+          <CardTitle className="flex items-center gap-2 text-white">
             Ready to test your knowledge?
-            <Badge variant="outline" className="ml-2">
+            <Badge variant="outline" className="ml-2 border-[#1565C0] text-[#1565C0]">
               {quizType === "daily" ? "Daily Practice" : 
                quizType === "oa" ? "Online Assessment" :
                quizType === "dsa" ? "DSA Practice" :
@@ -120,23 +120,23 @@ export default function Quiz({ quizType = "technical", questionCount = 15 }) {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-muted-foreground">
+          <p className="text-[#B0B0B0]">
             This quiz contains {questionCount} questions specific to your industry and
             skills. Take your time and choose the best answer for each question.
           </p>
           {quizType === "daily" && (
-            <p className="text-sm mt-2 text-muted-foreground">
+            <p className="text-sm mt-2 text-[#B0B0B0]">
               Daily practice helps reinforce your knowledge with quick, focused questions.
             </p>
           )}
           {quizType === "dsa" && (
-            <p className="text-sm mt-2 text-muted-foreground">
+            <p className="text-sm mt-2 text-[#B0B0B0]">
               These questions focus on data structures and algorithms commonly asked in technical interviews.
             </p>
           )}
         </CardContent>
         <CardFooter>
-          <Button onClick={generateQuizFn} className="w-full">
+          <Button onClick={generateQuizFn} className="w-full bg-[#1565C0] hover:bg-[#1976D2] text-white">
             Start Quiz
           </Button>
         </CardFooter>
@@ -147,17 +147,19 @@ export default function Quiz({ quizType = "technical", questionCount = 15 }) {
   const question = quizData[currentQuestion];
 
   return (
-    <Card className="mx-2">
+    <Card className="mx-2 bg-[#121212] border-[#282828]">
       <CardHeader>
-        <CardTitle className="flex items-center justify-between">
+        <CardTitle className="flex items-center justify-between text-white">
           <span>Question {currentQuestion + 1} of {quizData.length}</span>
           <div className="flex gap-2">
             {quizData[currentQuestion].topic && (
-              <Badge variant="outline">{quizData[currentQuestion].topic}</Badge>
+              <Badge variant="outline" className="border-[#1565C0] text-[#1565C0]">{quizData[currentQuestion].topic}</Badge>
             )}
             {quizData[currentQuestion].difficulty && (
-              <Badge variant={quizData[currentQuestion].difficulty === "easy" ? "success" : 
-                     quizData[currentQuestion].difficulty === "medium" ? "warning" : "destructive"}>
+              <Badge className={`${
+                quizData[currentQuestion].difficulty === "easy" ? "bg-green-800 text-green-100" : 
+                quizData[currentQuestion].difficulty === "medium" ? "bg-yellow-800 text-yellow-100" : "bg-red-800 text-red-100"
+              }`}>
                 {quizData[currentQuestion].difficulty}
               </Badge>
             )}
@@ -165,7 +167,7 @@ export default function Quiz({ quizType = "technical", questionCount = 15 }) {
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <p className="text-lg font-medium">{question.question}</p>
+        <p className="text-lg font-medium text-white">{question.question}</p>
         <RadioGroup
           onValueChange={handleAnswer}
           value={answers[currentQuestion]}
@@ -173,16 +175,16 @@ export default function Quiz({ quizType = "technical", questionCount = 15 }) {
         >
           {question.options.map((option, index) => (
             <div key={index} className="flex items-center space-x-2">
-              <RadioGroupItem value={option} id={`option-${index}`} />
-              <Label htmlFor={`option-${index}`}>{option}</Label>
+              <RadioGroupItem value={option} id={`option-${index}`} className="border-[#1565C0] text-[#1565C0]" />
+              <Label htmlFor={`option-${index}`} className="text-[#B0B0B0]">{option}</Label>
             </div>
           ))}
         </RadioGroup>
 
         {showExplanation && (
-          <div className="mt-4 p-4 bg-muted rounded-lg">
-            <p className="font-medium">Explanation:</p>
-            <p className="text-muted-foreground">{question.explanation}</p>
+          <div className="mt-4 p-4 bg-[#1A1A24] rounded-lg border border-[#282828]">
+            <p className="font-medium text-white">Explanation:</p>
+            <p className="text-[#B0B0B0]">{question.explanation}</p>
           </div>
         )}
       </CardContent>
@@ -192,6 +194,7 @@ export default function Quiz({ quizType = "technical", questionCount = 15 }) {
             onClick={() => setShowExplanation(true)}
             variant="outline"
             disabled={!answers[currentQuestion]}
+            className="border-[#1565C0] text-[#1565C0] hover:bg-[#1565C0]/10"
           >
             Show Explanation
           </Button>
@@ -199,10 +202,10 @@ export default function Quiz({ quizType = "technical", questionCount = 15 }) {
         <Button
           onClick={handleNext}
           disabled={!answers[currentQuestion] || savingResult}
-          className="ml-auto"
+          className="ml-auto bg-[#1565C0] hover:bg-[#1976D2] text-white"
         >
           {savingResult && (
-            <BarLoader className="mt-4" width={"100%"} color="gray" />
+            <BarLoader className="mt-4" width={"100%"} color="#FFC107" />
           )}
           {currentQuestion < quizData.length - 1
             ? "Next Question"

@@ -33,12 +33,12 @@ export default function PerformanceChart({ assessments }) {
   }, [assessments]);
 
   return (
-    <Card>
+    <Card className="bg-[#121212] border border-[#282828] hover:bg-[#1A1A24] transition-colors">
       <CardHeader>
         <CardTitle className="gradient-title text-3xl md:text-4xl">
           Performance Trend
         </CardTitle>
-        <CardDescription>Your quiz scores over time</CardDescription>
+        <CardDescription className="text-[#B0B0B0]">Your quiz scores over time</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="h-[300px]">
@@ -51,11 +51,11 @@ export default function PerformanceChart({ assessments }) {
                 content={({ active, payload }) => {
                   if (active && payload?.length) {
                     return (
-                      <div className="bg-background border rounded-lg p-2 shadow-md">
-                        <p className="text-sm font-medium">
+                      <div className="bg-[#121212] border border-[#282828] rounded-lg p-2 shadow-md">
+                        <p className="text-sm font-medium text-white">
                           Score: {payload[0].value}%
                         </p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-xs text-[#B0B0B0]">
                           {payload[0].payload.date}
                         </p>
                       </div>

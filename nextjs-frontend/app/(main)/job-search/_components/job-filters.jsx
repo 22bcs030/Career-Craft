@@ -51,10 +51,10 @@ export default function JobFilters({ filters, setFilters }) {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="p-6 rounded-xl bg-gradient-to-br from-slate-50 to-slate-100 shadow-lg"
+      className="p-6 rounded-xl bg-gradient-to-r from-[#0F0F0F] to-[#121212] shadow-lg border border-[#282828]"
     >
       <motion.h2 
-        className="text-2xl font-bold text-center mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-500"
+        className="text-2xl font-bold text-center mb-6 text-white"
         variants={itemVariants}
       >
         Job Search Filters
@@ -62,7 +62,7 @@ export default function JobFilters({ filters, setFilters }) {
       
       <div className="space-y-8">
         <motion.div variants={itemVariants} className="space-y-3">
-          <Label className="block text-lg font-medium text-gray-700">Platforms</Label>
+          <Label className="block text-lg font-medium text-white">Platforms</Label>
           <div className="flex flex-wrap gap-3">
             {platforms.map((platform) => (
               <motion.div

@@ -167,7 +167,7 @@ export default function JobScraper() {
           <motion.div 
             key="empty"
             variants={itemVariants}
-            className="text-center py-12 text-muted-foreground bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg"
+            className="text-center py-12 text-white bg-gradient-to-r from-[#0F0F0F] to-[#121212] rounded-lg border border-[#282828]"
           >
             {role ? 'No jobs found. Try different keywords.' : 'Enter a job title to start searching'}
           </motion.div>

@@ -43,7 +43,7 @@ export default function JobCard({ job }) {
           border-0 overflow-hidden
           ${isVisible ? "opacity-100 rotate-0 translate-y-0" : "opacity-0 -rotate-3 translate-y-16"}
           ${isHovered ? "shadow-2xl" : "shadow-lg"}
-          bg-gradient-to-br from-white via-blue-50 to-purple-50`}
+          bg-gradient-to-br from-[#121212] via-[#15181E] to-[#1A1A24]`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => {
           setIsHovered(false);
@@ -73,7 +73,7 @@ export default function JobCard({ job }) {
         )}
         
         {/* Animated background gradient */}
-        <div className={`absolute inset-0 bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 opacity-30 
+        <div className={`absolute inset-0 bg-gradient-to-r from-[#1A1A24] via-[#15181E] to-[#121212] opacity-30 
           transition-opacity duration-500 ${isHovered ? "opacity-80" : "opacity-0"}`}
           style={{ animation: isHovered ? "gradient-shift 3s ease infinite" : "none" }}
         ></div>
@@ -81,8 +81,8 @@ export default function JobCard({ job }) {
         <CardHeader className="pb-2 relative z-10">
           <div className="flex justify-between items-start">
             <CardTitle 
-              className={`text-lg font-bold transition-all duration-300 ${
-                isHovered ? "text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600" : ""
+              className={`text-lg font-bold transition-all duration-300 text-white ${
+                isHovered ? "text-[#FFC107]" : ""
               }`}
             >
               {job.title}
@@ -98,7 +98,7 @@ export default function JobCard({ job }) {
             </Badge>
           </div>
           <CardDescription className="flex justify-between items-center mt-1">
-            <span className="font-medium text-gray-700">{job.company}</span>
+            <span className="font-medium text-[#B0B0B0]">{job.company}</span>
           </CardDescription>
         </CardHeader>
         
@@ -106,25 +106,25 @@ export default function JobCard({ job }) {
           <div className={`transition-all duration-500 ${
             isHovered ? "transform translate-x-2" : ""
           }`}>
-            <p className={`text-sm flex items-center gap-2 text-gray-600 transition-colors duration-300 ${
-              isHovered ? "text-blue-600" : ""
+            <p className={`text-sm flex items-center gap-2 text-[#B0B0B0] transition-colors duration-300 ${
+              isHovered ? "text-[#FFC107]" : ""
             }`}>
-              <MapPin className={`h-4 w-4 ${isHovered ? "text-pink-500" : "text-gray-400"}`} />
+              <MapPin className={`h-4 w-4 ${isHovered ? "text-[#FFC107]" : "text-[#B0B0B0]"}`} />
               {job.location}
             </p>
             
-            <p className={`text-sm flex items-center gap-2 text-gray-600 transition-colors duration-300 ${
-              isHovered ? "text-purple-600" : ""
+            <p className={`text-sm flex items-center gap-2 text-[#B0B0B0] transition-colors duration-300 ${
+              isHovered ? "text-[#FFC107]" : ""
             }`}>
-              <Calendar className={`h-4 w-4 ${isHovered ? "text-purple-500" : "text-gray-400"}`} />
+              <Calendar className={`h-4 w-4 ${isHovered ? "text-[#FFC107]" : "text-[#B0B0B0]"}`} />
               Posted {job.postedDate}
             </p>
             
             {job.salary && (
-              <p className={`text-sm flex items-center gap-2 text-gray-600 transition-colors duration-300 ${
-                isHovered ? "text-indigo-600" : ""
+              <p className={`text-sm flex items-center gap-2 text-[#B0B0B0] transition-colors duration-300 ${
+                isHovered ? "text-[#FFC107]" : ""
               }`}>
-                <DollarSign className={`h-4 w-4 ${isHovered ? "text-indigo-500" : "text-gray-400"}`} />
+                <DollarSign className={`h-4 w-4 ${isHovered ? "text-[#FFC107]" : "text-[#B0B0B0]"}`} />
                 {job.salary}
               </p>
             )}

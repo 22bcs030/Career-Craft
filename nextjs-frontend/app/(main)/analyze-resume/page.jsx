@@ -119,28 +119,28 @@ export default function AnalyzeResumePage() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Analyze Your Resume</h1>
+      <h1 className="text-2xl font-bold mb-4 text-white">Analyze Your Resume</h1>
       <form onSubmit={analyzeResume} className="space-y-4">
-        <Input type="file" onChange={handleFileChange} />
+        <Input type="file" onChange={handleFileChange} className="bg-[#121212] border-[#282828] text-white" />
         {error && <p className="text-red-500 text-sm">{error}</p>}
-        <Button type="submit" disabled={isLoading}>
+        <Button type="submit" disabled={isLoading} className="bg-[#1565C0] hover:bg-[#1976D2] text-white">
           {isLoading ? <Loader2 className="animate-spin mr-2" /> : "Analyze Resume"}
         </Button>
       </form>
       {analysisData && (
-        <Card className="mt-4">
+        <Card className="mt-4 bg-[#121212] border-[#282828] text-white">
           <CardContent>
-            <h2 className="text-xl font-semibold mb-2">Analysis Results</h2>
+            <h2 className="text-xl font-semibold mb-2 text-white">Analysis Results</h2>
             <div className="space-y-2">
               <p>
-                <strong>Extracted Text:</strong> {analysisData.extracted_text}
+                <strong className="text-[#FFC107]">Extracted Text:</strong> <span className="text-[#B0B0B0]">{analysisData.extracted_text}</span>
               </p>
               <p>
-                <strong>Skills:</strong> {analysisData.skills.join(", ")}
+                <strong className="text-[#FFC107]">Skills:</strong> <span className="text-[#B0B0B0]">{analysisData.skills.join(", ")}</span>
               </p>
               <p>
-                <strong>Predicted Roles:</strong>{" "}
-                {analysisData.predictedRoles.join(", ")}
+                <strong className="text-[#FFC107]">Predicted Roles:</strong>{" "}
+                <span className="text-[#B0B0B0]">{analysisData.predictedRoles.join(", ")}</span>
               </p>
             </div>
           </CardContent>

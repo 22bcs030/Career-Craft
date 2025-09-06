@@ -55,12 +55,12 @@ export default function CoverLetterList({ coverLetters }) {
 
   if (!coverLetters?.length) {
     return (
-      <Card className="border-dashed bg-gray-50 dark:bg-gray-900/50 hover:shadow-md transition-shadow">
+      <Card className="border border-[#282828] bg-[#121212] hover:shadow-md transition-shadow">
         <CardHeader>
-          <CardTitle className="text-2xl font-semibold text-gray-700 dark:text-gray-200">
+          <CardTitle className="text-2xl font-semibold text-white">
             No Cover Letters Yet
           </CardTitle>
-          <CardDescription className="text-gray-500 dark:text-gray-400">
+          <CardDescription className="text-[#B0B0B0]">
             Create your first cover letter to get started
           </CardDescription>
         </CardHeader>
@@ -110,15 +110,15 @@ export default function CoverLetterList({ coverLetters }) {
       {coverLetters.map((letter) => (
         <Card
           key={letter.id}
-          className="group relative border border-gray-200 dark:border-gray-800 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-white dark:bg-gray-900"
+          className="group relative border border-[#282828] hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-[#121212]"
         >
           <CardHeader className="pb-2">
             <div className="flex items-start justify-between">
               <div>
-                <CardTitle className="text-xl font-semibold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent group-hover:from-purple-600 group-hover:to-indigo-600 transition-colors">
+                <CardTitle className="text-xl font-semibold text-white">
                   {letter.jobTitle} at {letter.companyName}
                 </CardTitle>
-                <CardDescription className="text-sm text-gray-500 dark:text-gray-400">
+                <CardDescription className="text-sm text-[#B0B0B0]">
                   Created {format(new Date(letter.createdAt), "PPP")}
                 </CardDescription>
               </div>
@@ -167,7 +167,7 @@ export default function CoverLetterList({ coverLetters }) {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-muted-foreground text-sm line-clamp-3">
+            <div className="text-[#B0B0B0] text-sm line-clamp-3">
               {letter.jobDescription}
             </div>
           </CardContent>

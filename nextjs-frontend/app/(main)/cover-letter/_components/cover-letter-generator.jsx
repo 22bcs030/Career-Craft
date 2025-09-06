@@ -101,14 +101,20 @@ export default function CoverLetterGenerator() {
 
   return (
     <div className="space-y-6">
-      <Card>
-        <CardHeader>
-          <CardTitle>Job Details</CardTitle>
-          <CardDescription>
+      <Card className="bg-[#121212] border border-[#282828] shadow-lg overflow-hidden">
+        <CardHeader className="bg-gradient-to-r from-[#0F0F0F] via-[#121212] to-[#1A1A1A] border-b border-[#282828] relative">
+          <div className="absolute inset-0 opacity-10 pointer-events-none">
+            <div className="absolute -top-20 -left-20 w-60 h-60 bg-[#1565C0] rounded-full filter blur-3xl"></div>
+            <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-[#6A1B9A] rounded-full filter blur-3xl"></div>
+          </div>
+          <CardTitle className="bg-gradient-to-r from-[#1565C0] to-[#6A1B9A] bg-clip-text text-transparent text-2xl font-bold relative z-10">
+            Job Details
+          </CardTitle>
+          <CardDescription className="text-[#A0A0A0] relative z-10">
             Provide information about the position you're applying for
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="pt-5">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
@@ -229,7 +235,7 @@ export default function CoverLetterGenerator() {
               <Button
                 type="submit"
                 disabled={generatingLetter || (descriptionSource === "resume" && !resumeFile)}
-                className="px-5 py-2 text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 transition-all duration-300 ease-in-out"
+                className="px-5 py-2 text-white bg-gradient-to-r from-[#1565C0] to-[#6A1B9A] rounded-lg shadow-md hover:opacity-90 transition-all duration-300 ease-in-out"
               >
                 {generatingLetter ? (
                   <>
@@ -237,7 +243,7 @@ export default function CoverLetterGenerator() {
                     Generating...
                   </>
                 ) : (
-                  "🚀 Generate Cover Letter"
+                  "✨ Generate Cover Letter"
                 )}
               </Button>
             </div>

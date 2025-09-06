@@ -574,22 +574,22 @@ export const EntryForm = ({ type, entries = [], onChange }) => {
                 setCurrentTab("basic");
                 reset();
               }}
-              className="bg-blue-600 hover:bg-blue-700"
+              className="bg-[#1565C0] hover:bg-blue-700 text-white"
             >
               <PlusCircle className="h-4 w-4 mr-2" />
               Add {type}
             </Button>
           </div>
           {entries.map((item, index) => (
-            <Card key={index} className="border-l-4 border-blue-500 hover:shadow-md transition-shadow group">
+            <Card key={index} className="border-l-4 border-blue-500 border border-[#282828] bg-[#121212] hover:shadow-md transition-shadow group">
               <CardHeader className="pb-2">
                 <div className="flex justify-between items-start">
                   <div>
-                    <CardTitle className="text-lg font-semibold text-gray-900">
+                    <CardTitle className="text-lg font-semibold text-white">
                       {item.title}
                     </CardTitle>
                     {!isProject && item.organization && (
-                      <p className="text-sm text-gray-600 mt-1">
+                      <p className="text-sm text-gray-300 mt-1">
                         {item.organization}
                       </p>
                     )}
@@ -637,7 +637,7 @@ export const EntryForm = ({ type, entries = [], onChange }) => {
                 </div>
 
                 {!isProject && item.startDate && (
-                  <div className="flex items-center text-sm text-gray-500 mt-1">
+                  <div className="flex items-center text-sm text-gray-400 mt-1">
                     <Calendar className="h-4 w-4 mr-1" />
                     <span>
                       {item.startDate} — {item.endDate || "Present"}
@@ -662,7 +662,7 @@ export const EntryForm = ({ type, entries = [], onChange }) => {
                   </div>
                 )}
 
-                <ul className="space-y-2 pl-5 list-disc text-sm text-gray-700">
+                <ul className="space-y-2 pl-5 list-disc text-sm text-gray-300">
                   {item.description.split('\n').filter(line => line.trim()).map((line, i) => (
                     <li key={i}>
                       {line.replace(/^[-•]\s*/, '')}
@@ -672,8 +672,8 @@ export const EntryForm = ({ type, entries = [], onChange }) => {
 
                 {item.achievements && (
                   <div className="mt-4">
-                    <h4 className="text-sm font-medium text-gray-900 mb-2">Key Achievements:</h4>
-                    <ul className="space-y-2 pl-5 list-disc text-sm text-gray-700">
+                    <h4 className="text-sm font-medium text-white mb-2">Key Achievements:</h4>
+                    <ul className="space-y-2 pl-5 list-disc text-sm text-gray-300">
                       {item.achievements.split('\n').filter(line => line.trim()).map((line, i) => (
                         <li key={i}>
                           {line.replace(/^[-•]\s*/, '')}
@@ -714,23 +714,23 @@ export const EntryForm = ({ type, entries = [], onChange }) => {
       )}
 
       {isAdding && (
-        <Card className="border-2 border-blue-200">
-          <CardHeader className="bg-blue-50 rounded-t-lg">
-            <CardTitle className="text-lg font-semibold text-gray-900">
+        <Card className="border-2 border-[#282828] bg-[#121212]">
+          <CardHeader className="bg-[#1A1A24] rounded-t-lg border-b border-[#282828]">
+            <CardTitle className="text-lg font-semibold text-white">
               {editingIndex !== null ? `Edit ${type}` : `Add New ${type}`}
             </CardTitle>
           </CardHeader>
           
           <CardContent className="pt-6">
             <Tabs value={currentTab} onValueChange={setCurrentTab}>
-              <TabsList className="grid grid-cols-3 mb-6 bg-gray-100">
-                <TabsTrigger value="basic" className="data-[state=active]:bg-white">
+              <TabsList className="grid grid-cols-3 mb-6 bg-[#1A1A24] border border-[#282828]">
+                <TabsTrigger value="basic" className="data-[state=active]:bg-[#121212] text-white">
                   Basic Info
                 </TabsTrigger>
-                <TabsTrigger value="details" className="data-[state=active]:bg-white">
+                <TabsTrigger value="details" className="data-[state=active]:bg-[#121212] text-white">
                   Details
                 </TabsTrigger>
-                <TabsTrigger value="description" className="data-[state=active]:bg-white">
+                <TabsTrigger value="description" className="data-[state=active]:bg-[#121212] text-white">
                   Description
                 </TabsTrigger>
               </TabsList>
@@ -753,14 +753,14 @@ export const EntryForm = ({ type, entries = [], onChange }) => {
                   {!isProject && (
                     <>
                       <div>
-                        <Label htmlFor="organization">
+                        <Label htmlFor="organization" className="text-white">
                           {isEducation ? "Institution" : "Company"} *
                         </Label>
                         <Input
                           id="organization"
                           placeholder={isEducation ? "University Name" : "Company Name"}
                           {...register("organization")}
-                          className="mt-1"
+                          className="mt-1 bg-[#1A1A24] text-white border-[#282828] focus:border-[#1565C0] focus:ring-[#1565C0]"
                         />
                         {errors.organization && (
                           <p className="mt-1 text-sm text-red-600">{errors.organization.message}</p>
@@ -773,7 +773,7 @@ export const EntryForm = ({ type, entries = [], onChange }) => {
                             id="startDate"
                             type="month"
                             {...register("startDate")}
-                            className="mt-1"
+                            className="mt-1 bg-[#1A1A24] text-white border-[#282828] focus:border-[#1565C0] focus:ring-[#1565C0]"
                           />
                           {errors.startDate && (
                             <p className="mt-1 text-sm text-red-600">{errors.startDate.message}</p>
@@ -786,7 +786,7 @@ export const EntryForm = ({ type, entries = [], onChange }) => {
                             type="month"
                             {...register("endDate")}
                             disabled={current}
-                            className="mt-1"
+                            className="mt-1 bg-[#1A1A24] text-white border-[#282828] focus:border-[#1565C0] focus:ring-[#1565C0]"
                           />
                           {errors.endDate && (
                             <p className="mt-1 text-sm text-red-600">{errors.endDate.message}</p>
@@ -803,7 +803,7 @@ export const EntryForm = ({ type, entries = [], onChange }) => {
                             if (checked) setValue("endDate", "");
                           }}
                         />
-                        <Label htmlFor="current" className="text-sm">
+                        <Label htmlFor="current" className="text-sm text-white">
                           Currently {isEducation ? "studying" : "working"} here
                         </Label>
                       </div>
@@ -944,7 +944,7 @@ export const EntryForm = ({ type, entries = [], onChange }) => {
                   id="description"
                   placeholder={`Enter bullet points about your ${type.toLowerCase()}...\n• First achievement\n• Second responsibility\n• Third accomplishment`}
                   {...register("description", { required: "Description is required" })}
-                  className="h-40 font-mono text-sm"
+                  className="h-40 font-mono text-sm bg-[#1A1A24] text-white border-[#282828] focus:border-[#1565C0] focus:ring-[#1565C0]"
                   value={description || ''}
                   onChange={(e) => {
                     setValue("description", e.target.value, { shouldValidate: true });
@@ -955,7 +955,7 @@ export const EntryForm = ({ type, entries = [], onChange }) => {
                 )}
 
                 <div className="space-y-3">
-                  <Label className="flex items-center gap-2 text-purple-600">
+                  <Label className="flex items-center gap-2 text-purple-400">
                     <Sparkles className="h-4 w-4" />
                     AI Assistance
                   </Label>
@@ -1049,7 +1049,7 @@ export const EntryForm = ({ type, entries = [], onChange }) => {
               </Button>
               <Button 
                 onClick={handleAdd}
-                className="bg-blue-600 hover:bg-blue-700"
+                className="bg-[#1565C0] hover:bg-blue-700 text-white"
                 disabled={!isDirty || !isFormValid}
               >
                 {editingIndex !== null ? (

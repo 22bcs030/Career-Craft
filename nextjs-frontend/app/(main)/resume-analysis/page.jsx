@@ -154,7 +154,7 @@ const ResumeAnalyzer = () => {
 
 
 
-      const baseURL = "https://careercraft.onrender.com"; // hosted one 
+      const baseURL =  "https://careerpilot-jm7u.onrender.com"; // Use environment variable with fallback
 
       const [analysisRes, skillsRes, predictionRes] = await Promise.all([
         axios.post(`${baseURL}/upload_resume/`, formData, {
@@ -283,11 +283,11 @@ const ResumeAnalyzer = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-tr from-purple-100 via-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-tr from-[#0F0F0F] via-[#121212] to-[#1A1A1A]">
       {/* Application Header */}
-      <header className="w-full bg-white shadow-md p-4 md:p-6">
+      <header className="w-full bg-[#0F0F0F] shadow-lg p-4 md:p-6 border-b border-[#282828]">
         <motion.h1 
-          className="font-bold text-4xl md:text-6xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent drop-shadow-sm text-center md:text-left"
+          className="font-bold text-4xl md:text-6xl bg-gradient-to-r from-[#1565C0] via-[#6A1B9A] to-[#C62828] bg-clip-text text-transparent drop-shadow-sm text-center md:text-left"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -295,7 +295,7 @@ const ResumeAnalyzer = () => {
           Resume Analyzer
         </motion.h1>
         <motion.p
-          className="text-gray-600 text-center md:text-left mt-2"
+          className="text-[#A0A0A0] text-center md:text-left mt-2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.5 }}
@@ -363,7 +363,7 @@ const ResumeAnalyzer = () => {
       {/* Main Container */}
       <div className="container mx-auto px-4 py-8">
         <motion.div
-          className={`bg-white rounded-2xl shadow-2xl overflow-hidden w-full transition-all duration-500 ${
+          className={`bg-[#121212] border border-[#282828] rounded-2xl shadow-2xl overflow-hidden w-full transition-all duration-500 ${
             isFullscreen ? "fixed inset-0 m-0 z-40 rounded-none" : "max-w-6xl mx-auto"
           }`}
           initial={{ scale: 0.95, opacity: 0 }}
@@ -371,7 +371,7 @@ const ResumeAnalyzer = () => {
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
           {/* Component Header Bar */}
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-4 flex justify-between items-center shadow-md">
+          <div className="bg-gradient-to-r from-[#1565C0] via-[#6A1B9A] to-[#C62828] p-4 flex justify-between items-center shadow-md">
             <div className="flex items-center">
               {analyzed && (
                 <motion.button
@@ -433,15 +433,15 @@ const ResumeAnalyzer = () => {
                 <motion.div
                   className={`w-16 h-3 rounded-full ${
                     step > s 
-                      ? "bg-green-500" 
+                      ? "bg-[#C62828]" 
                       : step === s 
-                      ? "bg-indigo-600 animate-pulse" 
-                      : "bg-gray-300"
+                      ? "bg-gradient-to-r from-[#1565C0] to-[#6A1B9A] animate-pulse" 
+                      : "bg-[#282828]"
                   }`}
                 />
                 <motion.span 
                   className={`absolute -bottom-6 text-xs font-medium ${
-                    step >= s ? "text-indigo-600" : "text-gray-500"
+                    step >= s ? "text-[#FFC107]" : "text-[#A0A0A0]"
                   }`}
                   style={{ left: '50%', transform: 'translateX(-50%)' }}
                 >
@@ -468,12 +468,12 @@ const ResumeAnalyzer = () => {
                 <motion.div
                   className={`border-2 border-dashed rounded-xl p-8 text-center transition-colors duration-300 ${
                     isDragging 
-                      ? "border-indigo-500 bg-indigo-50" 
+                      ? "border-[#1565C0] bg-[#0F0F0F]/50" 
                       : uploading 
-                      ? "border-yellow-400 bg-yellow-50" 
+                      ? "border-[#FFC107] bg-[#0F0F0F]/50" 
                       : file 
-                      ? "border-green-400 bg-green-50" 
-                      : "border-gray-300 hover:border-indigo-400 hover:bg-indigo-50"
+                      ? "border-[#C62828] bg-[#0F0F0F]/50" 
+                      : "border-[#282828] hover:border-[#1565C0] hover:bg-[#0F0F0F]/50"
                   }`}
                   onDragOver={handleDragOver}
                   onDragLeave={handleDragLeave}
@@ -486,12 +486,12 @@ const ResumeAnalyzer = () => {
                       transition: { repeat: Infinity, duration: 2 }
                     }}
                   >
-                    <FiUpload className="mx-auto text-4xl text-indigo-500 mb-4" />
+                    <FiUpload className="mx-auto text-4xl text-[#1565C0] mb-4" />
                   </motion.div>
-                  <h3 className="text-lg font-medium text-gray-700 mb-2">
+                  <h3 className="text-lg font-medium text-[#FFC107] mb-2">
                     {file ? file.raw.name : "Upload Your Resume"}
                   </h3>
-                  <p className="text-gray-600 mb-4">
+                  <p className="text-[#A0A0A0] mb-4">
                     {file 
                       ? `${(file.raw.size / 1024).toFixed(2)} KB - PDF` 
                       : "Drag & Drop or Click to Upload PDF (Max 10MB)"}
@@ -508,7 +508,7 @@ const ResumeAnalyzer = () => {
                
                   <label
                     htmlFor="fileUpload"
-                    className="cursor-pointer px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition-colors inline-block"
+                    className="cursor-pointer px-4 py-2 bg-gradient-to-r from-[#1565C0] to-[#6A1B9A] text-white rounded-lg hover:opacity-90 transition-colors inline-block shadow-lg"
                   >
                     {file ? "Change File" : "Browse Files"}
                   </label>
@@ -516,12 +516,12 @@ const ResumeAnalyzer = () => {
                   {/* Upload Progress Bar */}
                   {uploading && (
                     <motion.div
-                      className="mt-4 h-2 bg-gray-200 rounded-full overflow-hidden"
+                      className="mt-4 h-2 bg-[#282828] rounded-full overflow-hidden"
                       initial={{ width: 0 }}
                       animate={{ width: "100%" }}
                     >
                       <motion.div
-                        className="h-full bg-indigo-500"
+                        className="h-full bg-gradient-to-r from-[#1565C0] to-[#6A1B9A]"
                         initial={{ width: "0%" }}
                         animate={{ width: `${progress}%` }}
                         transition={{ duration: 0.3 }}
@@ -535,7 +535,7 @@ const ResumeAnalyzer = () => {
                   <motion.button
                     onClick={handleAnalyze}
                     disabled={!file || uploading}
-                    className="px-6 py-3 bg-indigo-600 text-white rounded-lg disabled:bg-gray-400 hover:bg-indigo-700 transition-all flex items-center justify-center gap-2"
+                    className="px-6 py-3 bg-gradient-to-r from-[#1565C0] to-[#6A1B9A] text-white rounded-lg disabled:bg-[#282828] hover:opacity-90 transition-all flex items-center justify-center gap-2 shadow-lg"
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.98 }}
                     aria-label="Analyze Resume"
@@ -557,7 +557,7 @@ const ResumeAnalyzer = () => {
                   <motion.button
                     onClick={handlePredictJobRole}
                     disabled={!file || uploading}
-                    className="px-6 py-3 bg-purple-600 text-white rounded-lg disabled:bg-gray-400 hover:bg-purple-700 transition-all flex items-center justify-center gap-2"
+                    className="px-6 py-3 bg-gradient-to-r from-[#C62828] to-[#F57C00] text-white rounded-lg disabled:bg-[#282828] hover:opacity-90 transition-all flex items-center justify-center gap-2 shadow-lg"
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.98 }}
                     aria-label="Predict Job Role"
@@ -581,7 +581,7 @@ const ResumeAnalyzer = () => {
                 {/* Features Info */}
                 {file && (
                   <motion.div
-                    className="mt-4 p-4 bg-blue-50 rounded-lg text-blue-700 text-sm"
+                    className="mt-4 p-4 bg-[#0F0F0F] border border-[#282828] rounded-lg text-[#A0A0A0] text-sm"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
@@ -600,15 +600,15 @@ const ResumeAnalyzer = () => {
 
             {/* Preview/Results Section */}
             <div
-              className={`flex-1 p-6 ${analyzed ? "w-full" : "md:w-1/2"} bg-gray-50 ${
+              className={`flex-1 p-6 ${analyzed ? "w-full" : "md:w-1/2"} bg-[#1A1A1A] ${
                 isFullscreen ? "h-full overflow-y-auto" : "max-h-[calc(100%-2rem)] overflow-y-auto"
               }`}
             >
               <Suspense 
                 fallback={
                   <div className="flex items-center justify-center h-full">
-                    <div className="animate-spin h-10 w-10 border-4 border-indigo-500 border-t-transparent rounded-full"></div>
-                    <span className="ml-3 text-gray-600">Loading results...</span>
+                    <div className="animate-spin h-10 w-10 border-4 border-[#1565C0] border-t-transparent rounded-full"></div>
+                    <span className="ml-3 text-[#A0A0A0]">Loading results...</span>
                   </div>
                 }
               >
@@ -623,16 +623,16 @@ const ResumeAnalyzer = () => {
                   />
                 ) : file ? (
                   <motion.div
-                    className="h-full rounded-lg overflow-hidden border border-gray-200 shadow-md"
+                    className="h-full rounded-lg overflow-hidden border border-[#282828] shadow-lg"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.2 }}
                   >
-                    <div className="bg-gray-100 px-4 py-2 border-b flex justify-between items-center">
-                      <span className="font-medium text-gray-700 truncate max-w-[70%]">
+                    <div className="bg-[#0F0F0F] px-4 py-2 border-b border-[#282828] flex justify-between items-center">
+                      <span className="font-medium text-[#FFC107] truncate max-w-[70%]">
                         {file.raw.name}
                       </span>
-                      <span className="text-xs text-gray-500">
+                      <span className="text-xs text-[#A0A0A0]">
                         {(file.raw.size / 1024).toFixed(2)} KB
                       </span>
                     </div>
@@ -644,14 +644,14 @@ const ResumeAnalyzer = () => {
                   </motion.div>
                 ) : (
                   <motion.div 
-                    className="flex flex-col items-center justify-center h-full text-gray-500"
+                    className="flex flex-col items-center justify-center h-full text-[#A0A0A0]"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5, duration: 0.5 }}
                   >
-                    <FiUpload size={48} className="text-gray-300 mb-4" />
-                    <p className="text-center">Upload a PDF resume to see preview</p>
-                    <p className="text-sm mt-2 text-gray-400">Supports standard PDF format</p>
+                    <FiUpload size={48} className="text-[#282828] mb-4" />
+                    <p className="text-center text-[#A0A0A0]">Upload a PDF resume to see preview</p>
+                    <p className="text-sm mt-2 text-[#505050]">Supports standard PDF format</p>
                   </motion.div>
                 )}
               </Suspense>

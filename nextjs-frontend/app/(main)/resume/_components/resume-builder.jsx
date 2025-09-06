@@ -1062,14 +1062,14 @@ export default function ResumeBuilder({ initialContent }) {
 
   return (
     <div data-color-mode="light" className="space-y-4">
-      <div className="flex flex-col md:flex-row justify-between items-center gap-4 bg-gradient-to-r from-slate-50 to-gray-100 p-6 rounded-xl shadow-lg">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-4 bg-gradient-to-r from-[#0F0F0F] to-[#121212] p-6 rounded-xl shadow-lg border border-[#282828]">
         <div className="flex flex-col">
-          <h1 className="font-bold text-5xl md:text-6xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent drop-shadow-sm">
+          <h1 className="font-bold text-5xl md:text-6xl bg-gradient-to-r from-[#1565C0] via-[#6A1B9A] to-[#C62828] bg-clip-text text-transparent drop-shadow-sm">
             Resume Builder
           </h1>
           <div className="flex items-center gap-2 mt-2">
-            <Progress value={completionProgress} className="h-2 w-40" />
-            <span className="text-sm text-gray-600">{completionProgress}% complete</span>
+            <Progress value={completionProgress} className="h-2 w-40 bg-[#282828]" />
+            <span className="text-sm text-[#FFC107]">{completionProgress}% complete</span>
           </div>
         </div>
         <div className="flex flex-wrap gap-3 items-center">

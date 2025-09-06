@@ -11,15 +11,15 @@ export default async function CoverLetterPage() {
   return (
     <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-5xl min-h-screen py-8">
       <div className="flex flex-col space-y-6">
-        <div className="flex flex-col md:flex-row gap-6 items-start md:items-center justify-between bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 p-6 rounded-xl shadow-sm">
+        <div className="flex flex-col md:flex-row gap-6 items-start md:items-center justify-between bg-gradient-to-r from-[#0F0F0F] to-[#121212] p-6 rounded-xl shadow-lg border border-[#282828]">
           <div className="space-y-3">
             <div className="flex items-center gap-4">
-              <FileText className="h-10 w-10 text-primary hidden md:block" />
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-primary via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+              <FileText className="h-10 w-10 text-[#C62828] hidden md:block" />
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-[#1565C0] via-[#6A1B9A] to-[#C62828] bg-clip-text text-transparent">
                 My Cover Letters
               </h1>
             </div>
-            <p className="text-lg text-muted-foreground max-w-md">
+            <p className="text-lg text-[#A0A0A0] max-w-md">
               Effortlessly craft and manage tailored cover letters to boost your job applications.
             </p>
           </div>
@@ -27,7 +27,7 @@ export default async function CoverLetterPage() {
           <Link href="/cover-letter/new">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-primary to-purple-600 hover:from-purple-600 hover:to-indigo-600 text-white shadow-md hover:shadow-lg transition-all duration-200"
+              className="bg-gradient-to-r from-[#1565C0] to-[#6A1B9A] hover:opacity-90 text-white shadow-md hover:shadow-lg transition-all duration-200"
             >
               <Plus className="h-5 w-5 mr-2" />
               Create New

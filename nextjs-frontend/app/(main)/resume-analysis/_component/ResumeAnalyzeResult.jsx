@@ -174,14 +174,14 @@ const ResumeAnalyzeResult = ({ textAnalysis, jobPrediction, onBack }) => {
   return (
     <div className="min-h-screen w-full overflow-y-auto bg-gradient-to-b from-gray-50 to-indigo-50">
       <motion.div
-        className="sticky top-0 bg-white z-20 p-4 border-b border-indigo-200 flex items-center justify-between shadow-lg"
+        className="sticky top-0 bg-[#121212] z-20 p-4 border-b border-[#282828] flex items-center justify-between shadow-lg"
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <motion.button
           onClick={onBack}
-          className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-all"
+          className="flex items-center gap-2 px-4 py-2 bg-[#1565C0] text-white rounded-lg hover:bg-[#1976D2] transition-all"
           whileHover={{ scale: 1.05, rotate: 2 }}
           whileTap={{ scale: 0.95 }}
           aria-label="Back to upload"
@@ -191,7 +191,7 @@ const ResumeAnalyzeResult = ({ textAnalysis, jobPrediction, onBack }) => {
         <h2 className="text-2xl font-extrabold text-indigo-800 tracking-tight">Analysis Results</h2>
         <motion.button
           onClick={handleDownload}
-          className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all"
+          className="flex items-center gap-2 px-4 py-2 bg-[#388E3C] text-white rounded-lg hover:bg-[#2E7D32] transition-all"
           whileHover={{ scale: 1.05, rotate: -2 }}
           whileTap={{ scale: 0.95 }}
           aria-label="Download Report as PDF"
@@ -204,12 +204,12 @@ const ResumeAnalyzeResult = ({ textAnalysis, jobPrediction, onBack }) => {
         {/* Main Score Card */}
         {textAnalysis && (
           <motion.div
-            className="col-span-1 bg-white p-6 rounded-xl shadow-xl border border-indigo-100"
+            className="col-span-1 bg-[#121212] p-6 rounded-xl shadow-xl border border-[#282828] text-white"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2, type: "spring" }}
           >
-            <h3 className="text-xl font-bold text-indigo-800 mb-4 flex items-center gap-2">
+            <h3 className="text-xl font-bold bg-gradient-to-r from-[#1565C0] to-[#6A1B9A] bg-clip-text text-transparent mb-4 flex items-center gap-2">
               Resume Score <FiInfo className="text-indigo-500" title="Overall resume quality" />
             </h3>
             <div className="flex flex-col items-center">

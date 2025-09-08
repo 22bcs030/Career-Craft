@@ -27,7 +27,7 @@ client = genai
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*", "https://career-craft-beryl.vercel.app"],  # Add Vercel domain explicitly
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

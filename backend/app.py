@@ -27,7 +27,7 @@ client = genai
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*", "https://career-craft-beryl.vercel.app"],  # Add Vercel domain explicitly
+    allow_origins=["*", "https://career-craft-beryl.vercel.app", "https://career-craft-22bcs030.vercel.app", "https://careercraft-frontend.vercel.app"],  # Multiple domains allowed
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -56,7 +56,20 @@ def clean_text(text):
 
 @app.get("/")
 def read_root():
-    return {"message": "Welcome to FastAPI application. Proceed to /docs to view available functions"}
+    return {
+        "message": "Welcome to CareerCraft API", 
+        "status": "running",
+        "version": "1.0.0", 
+        "documentation": "/docs"
+    }
+
+@app.get("/health")
+def health_check():
+    """Health check endpoint for Render."""
+    return {
+        "status": "healthy",
+        "models_loaded": model is not None and vectorizer is not None and label_encoder is not None
+    }
 
 @app.post("/upload_resume/")    
 async def upload_resume(file: UploadFile = File(...)):
@@ -313,10 +326,6 @@ async def websocket_chat(websocket: WebSocket):
 
 if __name__ == "__main__":
     print("Starting FastAPI server...")
-    print("Google API Key:", GOOGLE_API_KEY)
-    uvicorn.run(app, host="0.0.0.0", port=8000)
-
-
-
-# if __name__ == "__main__":
-#     uvicorn.run(app, host="0.0.0.0")  # No need to specify port
+    port = int(os.environ.get("PORT", 8000))  # Use PORT env var for Render compatibility
+    print(f"Server will run on port: {port}")
+    uvicorn.run(app, host="0.0.0.0", port=port)

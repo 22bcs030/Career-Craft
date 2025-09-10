@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { Button } from "./ui/button";
 import {
@@ -28,11 +26,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-// Remove checkUser import as it's server-side only
-// import { checkUser } from "@/lib/checkUser";
+import { checkUser } from "@/lib/checkUser";
 
-export default function Header() {
-  // Client component doesn't need server-side checkUser
+export default async function Header() {
+  await checkUser();
 
   return (
     <header className="fixed top-0 w-full border-b border-[#282828] bg-[#0F0F0F]/90 backdrop-blur-md z-50 shadow-md">
@@ -305,7 +302,7 @@ export default function Header() {
                 }}
                 afterSignOutUrl="/"
               />
-              <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-[#1565C0] rounded-full transition-all duration-300 opacity-0 group-hover:w-8 group-hover:opacity-100"></div>
+              <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full transition-all duration-300 opacity-0 group-hover:w-8 group-hover:opacity-100"></div>
             </div>
           </SignedIn>
         </div>

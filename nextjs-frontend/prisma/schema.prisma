@@ -16,6 +16,8 @@ model User {
   onboardingCompleted Boolean @default(false)
   imageUrl      String?
   industry      String?    // Combined industry-subindustry (e.g., "tech-software-development")
+  industryInsight IndustryInsight? @relation(fields: [industry], references: [industry], onDelete: SetNull, onUpdate: Cascade)
+
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
@@ -29,7 +31,7 @@ model User {
   resume        Resume?
   coverLetter   CoverLetter[]
   todos         Todo[]    // Add this relation
-  industryInsight IndustryInsight? @relation(fields: [industry], references: [industry], onDelete: SetNull, onUpdate: Cascade)
+
 }
 
 model Assessment {
